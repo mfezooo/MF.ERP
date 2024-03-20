@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MF.ERP.Models;
 
 namespace MF.ERP.DataAccess
 {
-    public interface ICustomerRepository
+    public interface ICustomerRepository : IRepository<Customer>
     {
     }
 }

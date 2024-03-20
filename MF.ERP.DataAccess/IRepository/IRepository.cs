@@ -15,6 +15,7 @@ namespace MF.ERP.DataAccess
         T GetFirstOrDefault(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, bool tracked = true);
         IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
         void Add(T entity);
+        void Update(T entity);
         void AddRange(IEnumerable<T> entities);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);

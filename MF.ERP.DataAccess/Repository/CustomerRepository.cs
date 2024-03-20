@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MF.ERP.Models;
 
-namespace MF.ERP.DataAccess 
+namespace MF.ERP.DataAccess
 {
-    public class CustomerRepository : Repository<CustomerRepository>, ICustomerRepository
+    public class CustomerRepository : Repository<Customer>, ICustomerRepository
     {
         public CustomerRepository(ApplicationDbContext dbContext) : base(dbContext)
         {

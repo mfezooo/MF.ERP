@@ -23,6 +23,10 @@ namespace MF.ERP.DataAccess
         {
             dbSet.Add(entity);
         }
+        public void Update(T entity)
+        {
+            dbSet.Update(entity);
+        }
         public void AddRange(IEnumerable<T> entities)
         {
             dbSet.AddRange(entities);

@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Static Navigation - SB Admin</title>
-    <link href="css/styles.css" rel="stylesheet" />
+    <title>CRM System</title>
+    <link href="~/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Added By Me-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <!-- Added By Me End-->
+
 </head>
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="\">CRM System</a>
+        <a class="navbar-brand ps-3" href="\">MAGD Lubricants</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -46,7 +52,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                     @* MenuItem*@
+                        @* MenuItem*@
                         @* Head Start*@
                         <div class="sb-sidenav-menu-heading">Management</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -57,17 +63,17 @@
                         @* Head End *@
                         @* Sub Start*@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav"> 
+                            <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="\">Create User</a>
                                 <a class="nav-link" href="\">Forgot Password</a>
                                 <a class="nav-link" href="\">Create Role</a>
-                                <a class="nav-link" href="\">User Permissions</a> 
+                                <a class="nav-link" href="\">User Permissions</a>
                             </nav>
-                        </div> 
+                        </div>
                         @* Sub End*@
-                   @* MenuItem End*@
+                        @* MenuItem End*@
                         @* MenuItem*@
-                        @* Head Start*@ 
+                        @* Head Start*@
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCustomer" aria-expanded="false" aria-controls="collapseCustomer">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Customers
@@ -77,7 +83,8 @@
                         @* Sub Start*@
                         <div class="collapse" id="collapseCustomer" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="\">Manage Customers</a> 
+                                <a class="nav-link" asp-controller="Customer" asp-action="Index">Customers</a>
+                                <a class="nav-link" asp-controller="Customer" asp-action="ViewVisits">View Visits</a>
                             </nav>
                         </div>
                         @* Sub End*@
@@ -121,22 +128,19 @@
 
                         @* MenuItem*@
                         @* Head Start*@
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFinance" aria-expanded="false" aria-controls="collapseFinance">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFollowup" aria-expanded="false" aria-controls="collapseFollowup">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Finance
+                            Followup
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         @* Head End *@
                         @* Sub Start*@
-                        <div class="collapse" id="collapseFinance" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="\">Cheques</a>
-                                <a class="nav-link" href="\">Payments</a> 
+                        <div class="collapse" id="collapseFollowup" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav"> 
+                                <a class="nav-link" asp-controller="Followup" asp-action="Index"> Followup</a>
+
                             </nav>
                         </div>
-                        @* Sub End*@
-                        @* MenuItem End*@
-
                         @* MenuItem*@
                         @* Head Start*@
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFinance" aria-expanded="false" aria-controls="collapseFinance">
@@ -155,7 +159,25 @@
                         @* Sub End*@
                         @* MenuItem End*@
 
-                       @*  <a class="nav-link" href="\">Schedule Visit</a>
+                        @* MenuItem*@
+                        @* Head Start*@
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseOthers" aria-expanded="false" aria-controls="collapseOthers">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Others
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @* Head End *@
+                        @* Sub Start*@
+                        <div class="collapse" id="collapseOthers" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="\">Cheques</a>
+                                <a class="nav-link" href="\">Payments</a>
+                            </nav>
+                        </div>
+                        @* Sub End*@
+                        @* MenuItem End*@
+
+                        @*  <a class="nav-link" href="\">Schedule Visit</a>
                         <a class="nav-link" href="\">Visit Actions</a>
 
                         <a class="nav-link" href="\">Questions</a>
@@ -171,7 +193,7 @@
 
 
 
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                      @*   <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Customers
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -184,7 +206,7 @@
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="\">Create Customer</a> 
+                                        <a class="nav-link" href="\">Create Customer</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -199,16 +221,13 @@
                                     </nav>
                                 </div>
                             </nav>
-                        </div>
+                        </div> *@
                         <div class="sb-sidenav-menu-heading">Addons</div>
                         <a class="nav-link" href="charts.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
+                            Reports
                         </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
+                        
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -239,13 +258,13 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
+    <script src="~/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="~/assets/demo/chart-area-demo.js"></script>
+    <script src="~/assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="~/js/datatables-simple-demo.js"></script>
+    <script src="~/js/scripts.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

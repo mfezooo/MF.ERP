@@ -21,19 +21,15 @@ namespace MF.ERP.Models
         public DateTime EndDate { get; set; }
         public bool IsBlocked { get; set; } 
         public string EndReason { get; set; } = string.Empty;
-        public CustomerType CustomerType { get; set; } = null!;
         public int AreaId { get; set; }
-        public Area? Area  { get; set; }
         public int IndustryId { get; set; }
-        public Industry? Industry  { get; set; }
         public int StatusId { get; set; }
-        public Status? LastStatus  { get; set; }
         public int RepresentiveId { get; set; }
+        public CustomerType CustomerType { get; set; } = null!;
+        public Area? Area  { get; set; }
+        public Industry? Industry  { get; set; }
+        public Status? LastStatus  { get; set; }
         public Representive? Representive  { get; set; }
         public IEnumerable<ContactPerson>? ContactPersons { get; set; }
-    }
-    public class CustomerType : BaseEntityWithNameArEn
-    {
-
     }
 }

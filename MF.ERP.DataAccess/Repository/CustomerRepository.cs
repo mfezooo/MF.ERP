@@ -8,4 +8,10 @@ namespace MF.ERP.DataAccess
         {
         }
     }
+    public class CustomerTypeRepository : Repository<CustomerType>, ICustomerTypeRepository
+    {
+        public CustomerTypeRepository(ApplicationDbContext dbContext) : base(dbContext)
+        {
+        }
+    }
 }

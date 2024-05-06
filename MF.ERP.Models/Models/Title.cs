@@ -3,4 +3,5 @@
     public class Title : BaseEntityWithNameArEn
     { 
     }
+    
 }

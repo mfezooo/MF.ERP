@@ -1,4 +1,5 @@
-﻿using MF.ERP.DataAccess;
+﻿using AutoMapper;
+using MF.ERP.DataAccess;
 using MF.ERP.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,21 +8,24 @@ namespace MF.ERP.Web.Controllers
     public class IndustryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public IndustryController(IUnitOfWork unitOfWork)
+        public IndustryController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
         public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Create(CustomerType entity)
+        public IActionResult Create(IndustryVM entity)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.CustomerTypeRepository.Add(entity);
+                var mapedEntity = _mapper.Map<Industry>(entity);
+                _unitOfWork.IndustryRepository.Add(mapedEntity);
                 _unitOfWork.Save();
                 return Json(new { isSuccess = true, message = "Created Successfuly" });
             }
@@ -30,7 +34,7 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var enties = await _unitOfWork.CustomerTypeRepository.GetAllAsync();
+            var enties = await _unitOfWork.IndustryRepository.GetAllAsync();
             return Json(enties);
         }
     }

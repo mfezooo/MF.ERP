@@ -1,10 +1,7 @@
-using MF.ERP.Web.ViewModels.BaseVM;
-using System.ComponentModel.DataAnnotations;
-namespace MF.ERP.Service.DTO
+namespace MF.ERP.Web
 {
-    public class CustomerVM : BaseClassVM
+    public class CustomerVM : BaseClassWithNameArEnVM
     {
-        
         public string Email { get; set; } = string.Empty;
         public DateTime WarehouseAvilableTill { get; set; }  
         public string Address { get; set; } = string.Empty;
@@ -21,6 +18,11 @@ namespace MF.ERP.Service.DTO
         public int IndustryId { get; set; }
         public int StatusId { get; set; }
         public int RepresentiveId { get; set; }
-        
+        //public CustomerType CustomerType { get; set; } = null!;
+        //public Area? Area  { get; set; }
+        //public Industry? Industry  { get; set; }
+        //public Status? LastStatus  { get; set; }
+        //public Representive? Representive  { get; set; }
+        //public IEnumerable<ContactPerson>? ContactPersons { get; set; }
     }
 }

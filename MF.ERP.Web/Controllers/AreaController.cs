@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MF.ERP.Web.Controllers
 {
-    public class CustomerStatusController : Controller
+    public class AreaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CustomerStatusController(IUnitOfWork unitOfWork, IMapper mapper)
+        public AreaController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -20,12 +20,12 @@ namespace MF.ERP.Web.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(CustomerStatusVM entity)
+        public IActionResult Create(AreaVM entity)
         {
             if (ModelState.IsValid)
             {
-                var mapedEntity = _mapper.Map<CustomerStatus>(entity);
-                _unitOfWork.CustomerStatusRepository.Add(mapedEntity);
+                var mapedEntity = _mapper.Map<Area>(entity);
+                _unitOfWork.AreaRepository.Add(mapedEntity);
                 _unitOfWork.Save();
                 return Json(new { isSuccess = true, message = "Created Successfuly" });
             }
@@ -34,7 +34,7 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var enties = await _unitOfWork.CustomerStatusRepository.GetAllAsync();
+            var enties = await _unitOfWork.AreaRepository.GetAllAsync();
             return Json(enties);
         }
     }

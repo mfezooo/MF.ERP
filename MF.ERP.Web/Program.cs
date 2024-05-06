@@ -1,8 +1,13 @@
 using MF.ERP.DataAccess;
-using Microsoft.EntityFrameworkCore;
+using MF.ERP.Web;
+using Microsoft.EntityFrameworkCore;  
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));

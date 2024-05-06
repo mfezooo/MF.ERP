@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MF.ERP.Models.Models
+namespace MF.ERP.Models
 {
     public class Consume:BaseEntity
     {

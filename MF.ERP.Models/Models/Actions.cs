@@ -1,6 +1,6 @@
 ﻿namespace MF.ERP.Models
 {
-    public class Action : BaseEntity 
+    public class Actions : BaseEntity 
     { 
         public DateTime? PlanedDate { get; set; }
         public DateTime? ActualDate { get; set; }

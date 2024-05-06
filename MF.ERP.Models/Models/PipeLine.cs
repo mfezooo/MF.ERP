@@ -1,4 +1,4 @@
-﻿namespace MF.ERP.Models.Models
+﻿namespace MF.ERP.Models 
 {
     public class PipeLine : BaseEntity 
     {

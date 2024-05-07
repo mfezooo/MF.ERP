@@ -11,8 +11,9 @@ function loadDataTable() {
         },
         "order": [[0, 'desc']],
         "columns": [
-            { "data": "nameAr", "width": "100%" },
-            { "data": "nameEn", "width": "100%" },
+            { "data": "id", "width": "10%" },
+            { "data": "nameAr", "width": "45%" },
+            { "data": "nameEn", "width": "45%" },
         ],
         "bDestroy": true
     });

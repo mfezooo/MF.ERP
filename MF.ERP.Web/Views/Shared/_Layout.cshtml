@@ -7,7 +7,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>CRM System</title>
-    <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />    
+    <link href="~/css/dt/datatables.datatables.min.css" rel="stylesheet" />
+
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Added By Me-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -15,18 +17,12 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-
-    <link src="~/css/datatables.css">
-    <link src="~/css/datatables.bootstrap4.min.css">
-    
-    @*  <link href="~/lib/datatables.net-buttons-bs4/buttons.bootstrap4.min.css" rel="stylesheet" /> *@
-
-    @*  <link href="~/js/select2/css/select2.css" rel="stylesheet">
-    <link href="~/js/select2/css/select2.min.css" rel="stylesheet"> *@
-
-    @*     <link rel="stylesheet" href="~/css/sweetalert2.min.css">
-    <script src="~/js/SweetAlert/sweetalert2.all.min.js"></script> *@
+     
+    <link href="~/css/datatables.bootstrap4.min.css rel=" stylesheet">
+    <script src="~/js/datatables.min.js"></script>
+   
     <!-- Added By Me End-->
+
 
 </head>
 <body>
@@ -295,8 +291,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="~/assets/demo/chart-area-demo.js"></script>
     <script src="~/assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="~/js/datatables-simple-demo.js"></script>
+   
     <script src="~/js/scripts.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

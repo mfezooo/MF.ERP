@@ -17,6 +17,7 @@ namespace MF.ERP.Web.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.cUser = "1";
             return View();
         }
         [HttpPost]

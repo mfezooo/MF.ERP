@@ -15,9 +15,37 @@ namespace MF.ERP.DataAccess
         {
 
         }
-        //public virtual DbSet<Customer> Customers { set; get; }
-        //public virtual DbSet<ContactPerson> ContactPersons { set; get; }
-        public virtual DbSet<CustomerType> CustomerTypes { set; get; }
+       //public virtual DbSet<Actions> Actions { set; get; }
+        public virtual DbSet<ActionStatus> ActionStatus { set; get; }
+        public virtual DbSet<ActionType> ActionTypes { set; get; }
+        public virtual DbSet<Area> Areas { set; get; }
+        public virtual DbSet<Consume> Consumes { set; get; }
+        public virtual DbSet<ContactPerson> ContactPersons { set; get; }
+        public virtual DbSet<Customer> Customers { set; get; }
+      public virtual DbSet<CustomerGroup> CustomerGroups { set; get; }
+        public virtual DbSet<CustomerStatus> CustomerStatus { set; get; }
+        public virtual DbSet<CustomerType> CustomerTyps { set; get; }
+        public virtual DbSet<Government> Governmens { set; get; }
+        public virtual DbSet<Industry> Industries { set; get; }
+        public virtual DbSet<Job> Jobs { set; get; }
+        public virtual DbSet<Order> Ordes { set; get; }
+        public virtual DbSet<OrderDetail> OrderDetais { set; get; }
+        public virtual DbSet<PaymentMethoud> PaymentMethous { set; get; }
+        public virtual DbSet<PaymentPlan> PaymentPlas { set; get; }
+        public virtual DbSet<PaymentPlanDetails> PaymentPlanDetails { set; get; }
+        public virtual DbSet<PineLineAction> PineLineActions { set; get; }
+        public virtual DbSet<PipeLine> PipeLins { set; get; }
+        public virtual DbSet<PipeLineStatus> PipeLineStatus { set; get; }
+        public virtual DbSet<Product> Products { set; get; }
+        public virtual DbSet<Question> Questions { set; get; }
+        public virtual DbSet<Representive> Representivs { set; get; }
+        public virtual DbSet<RepresintiveTarget> RepresintiveTarges { set; get; }
+        public virtual DbSet<Status> Status { set; get; }
+        public virtual DbSet<TartgetType> TartgetTyps { set; get; }
+        public virtual DbSet<Team> Teams { set; get; }
+        public virtual DbSet<TeamArea> TeamAres { set; get; }
+        public virtual DbSet<TeamTarget> TeamTarges { set; get; }
+        public virtual DbSet<Title> Titles { set; get; }
 
 
 
@@ -30,7 +58,7 @@ namespace MF.ERP.DataAccess
                 entity.ToTable("CustomerTypes");
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.NameAr).IsUnicode().HasMaxLength(200).IsRequired();
-                entity.Property(e => e.NameEn).IsUnicode(false).HasMaxLength(200).IsRequired(); 
+                entity.Property(e => e.NameEn).IsUnicode(false).HasMaxLength(200).IsRequired();
 
             });
             //modelBuilder.Entity<Customer>(entity =>

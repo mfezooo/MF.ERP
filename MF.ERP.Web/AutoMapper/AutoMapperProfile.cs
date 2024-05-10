@@ -70,7 +70,9 @@ namespace MF.ERP.Web
 
         private void CustomerMapper()
         {
-            CreateMap<CustomerVM, Customer>().ReverseMap();
+            CreateMap<CustomerVM, Customer>()
+                   .ForMember(d => d.Id, opt => opt.MapFrom(src =>src.CustomerId)) 
+                .ReverseMap();
         }
 
         private void CustomerGroupMapper()

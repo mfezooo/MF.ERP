@@ -20,9 +20,9 @@ namespace MF.ERP.DataAccess
             ActionTypeRepository = new ActionTypeRepository(_db);
             AreaRepository = new AreaRepository(_db);
             ConsumeRepository = new ConsumeRepository(_db);
-            ContactPersonRepository = new ContactPersonRepository(_db); 
+            ContactPersonRepository = new ContactPersonRepository(_db);
             CustomerGroupRepository = new CustomerGroupRepository(_db);
-            CustomerStatusRepository = new CustomerStatusRepository(_db); 
+            CustomerStatusRepository = new CustomerStatusRepository(_db);
             GovernmentRepository = new GovernmentRepository(_db);
             IndustryRepository = new IndustryRepository(_db);
             JobRepository = new JobRepository(_db);
@@ -53,9 +53,9 @@ namespace MF.ERP.DataAccess
         public IActionTypeRepository ActionTypeRepository { get; set; }
         public IAreaRepository AreaRepository { get; set; }
         public IConsumeRepository ConsumeRepository { get; set; }
-        public IContactPersonRepository ContactPersonRepository { get; set; } 
+        public IContactPersonRepository ContactPersonRepository { get; set; }
         public ICustomerGroupRepository CustomerGroupRepository { get; set; }
-        public ICustomerStatusRepository CustomerStatusRepository { get; set; } 
+        public ICustomerStatusRepository CustomerStatusRepository { get; set; }
         public IGovernmentRepository GovernmentRepository { get; set; }
         public IIndustryRepository IndustryRepository { get; set; }
         public IJobRepository JobRepository { get; set; }
@@ -94,9 +94,9 @@ namespace MF.ERP.DataAccess
             }
 
         }
-        public void Save()
+        public int Save()
         {
-            _db.SaveChanges();
+            return _db.SaveChanges();
         }
         public async Task SaveAsync()
         {

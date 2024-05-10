@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace MF.ERP.Web
 {
     public class CustomerVM : BaseClassWithNameArEnVM
     {
+        public int CustomerId { get; set; }
         public string Email { get; set; } = string.Empty;
         public DateTime WarehouseAvilableTill { get; set; }  
         public string Address { get; set; } = string.Empty;
@@ -17,12 +20,11 @@ namespace MF.ERP.Web
         public int AreaId { get; set; }
         public int IndustryId { get; set; }
         public int StatusId { get; set; }
-        public int RepresentiveId { get; set; }
-        //public CustomerType CustomerType { get; set; } = null!;
-        //public Area? Area  { get; set; }
-        //public Industry? Industry  { get; set; }
-        //public Status? LastStatus  { get; set; }
-        //public Representive? Representive  { get; set; }
-        //public IEnumerable<ContactPerson>? ContactPersons { get; set; }
+        public int RepresentiveId { get; set; } 
+        public List<SelectListItem>? CustomerTypeList { get; set; } 
+        public List<SelectListItem>? AreaList { get; set; }
+        public List<SelectListItem>? IndustryList { get; set; }
+        public List<SelectListItem>? LastStatusList { get; set; }
+        public List<SelectListItem>? RepresentiveList { get; set; } 
     }
 }

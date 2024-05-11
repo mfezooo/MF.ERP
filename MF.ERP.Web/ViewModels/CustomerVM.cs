@@ -21,6 +21,8 @@ namespace MF.ERP.Web
         public int IndustryId { get; set; }
         public int StatusId { get; set; }
         public int RepresentiveId { get; set; } 
+        public int GroupId { get; set; } 
+        public List<SelectListItem>? GroupList { get; set; } 
         public List<SelectListItem>? CustomerTypeList { get; set; } 
         public List<SelectListItem>? AreaList { get; set; }
         public List<SelectListItem>? IndustryList { get; set; }

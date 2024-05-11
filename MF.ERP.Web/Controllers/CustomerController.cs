@@ -3,6 +3,7 @@ using MF.ERP.DataAccess;
 using MF.ERP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections;
 
 namespace MF.ERP.Web.Controllers
 {
@@ -16,9 +17,20 @@ namespace MF.ERP.Web.Controllers
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            CustomerVM customerVM = new CustomerVM()
+            {
+                UserCreated = "1",
+                GroupList = await slCustomerGroup(),
+                CustomerTypeList = await slCustomerType(),
+                AreaList = await slArea(),
+                IndustryList = await slIndustry(),
+                RepresentiveList = await slRepresentive(),
+                LastStatusList = await slStatus()
+            };
+
+            return View(customerVM);
         }
         [HttpPost]
         public IActionResult Create(CustomerVM entity)
@@ -40,6 +52,12 @@ namespace MF.ERP.Web.Controllers
         {
             var enties = await _unitOfWork.CustomerRepository.GetAllAsync();
             return Json(enties);
+        }
+        [HttpGet]
+        public async Task<List<SelectListItem>?> slCustomerGroup()
+        {
+            var items = await _unitOfWork.CustomerGroupRepository.GetAllAsync();
+            return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
         }
 
         [HttpGet]
@@ -63,7 +81,7 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<List<SelectListItem>?> slStatus()
         {
-            var items = await _unitOfWork.StatusRepository.GetAllAsync();
+            var items = await _unitOfWork.CustomerStatusRepository.GetAllAsync();
             return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
         }
         [HttpGet]

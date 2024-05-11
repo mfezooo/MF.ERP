@@ -2,6 +2,7 @@
 using MF.ERP.DataAccess;
 using MF.ERP.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MF.ERP.Web.Controllers
 {
@@ -15,9 +16,14 @@ namespace MF.ERP.Web.Controllers
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            AreaVM vm = new AreaVM()
+            {
+                UserCreated = "1",
+                GovernmentList = await slGoverments()
+            }; 
+            return View(vm);
         }
         [HttpPost]
         public IActionResult Create(AreaVM entity)
@@ -36,6 +42,12 @@ namespace MF.ERP.Web.Controllers
         {
             var enties = await _unitOfWork.AreaRepository.GetAllAsync();
             return Json(enties);
+        }
+        [HttpGet]
+        public async Task<List<SelectListItem>?> slGoverments()
+        {
+            var items = await _unitOfWork.GovernmentRepository.GetAllAsync();
+            return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
         }
     }
 }

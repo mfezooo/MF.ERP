@@ -28,7 +28,7 @@ namespace MF.ERP.Models
         public CustomerType CustomerType { get; set; } = null!;
         public Area? Area  { get; set; }
         public Industry? Industry  { get; set; }
-        public Status? LastStatus  { get; set; }
+        public CustomerStatus? LastStatus  { get; set; }
         public Representive? Representive  { get; set; }
         public IEnumerable<ContactPerson>? ContactPersons { get; set; }
     }

@@ -73,27 +73,37 @@
                         @* Sub Start*@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="\CustomerType\Index">Customer Types</a>
+                                <a class="nav-link" href="\CustomerType">Customer Types</a>
                             </nav>
                         </div>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="\CustomerStatus\Index">Customer Status</a>
+                                <a class="nav-link" href="\CustomerStatus">Customer Status</a>
                             </nav>
                         </div>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="\Job\Index">Jobs</a>
+                                <a class="nav-link" href="\Job">Jobs</a>
                             </nav>
                         </div>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="\Industry\Index">Industry</a>
+                                <a class="nav-link" href="\Industry">Industry</a>
                             </nav>
                         </div>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="\Government\Index">Government</a>
+                                <a class="nav-link" href="\Government">Government</a>
+                            </nav>
+                        </div>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="\Area">Area</a>
+                            </nav>
+                        </div>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="\CustomerGroup">CustomerGroup</a>
                             </nav>
                         </div>
                         @* Sub End*@
@@ -102,14 +112,14 @@
                         @* MenuItem*@
                         @* Head Start*@
                         <div class="sb-sidenav-menu-heading">Management</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Users
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         @* Head End *@
                         @* Sub Start*@
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="\">Create User</a>
                                 <a class="nav-link" href="\">Forgot Password</a>
@@ -124,15 +134,31 @@
                         @* Head Start*@
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCustomer" aria-expanded="false" aria-controls="collapseCustomer">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Customers  Tab
+                            Customers 
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         @* Head End *@
                         @* Sub Start*@
                         <div class="collapse" id="collapseCustomer" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" asp-controller="Customer" asp-action="Index">Customers</a>
-                                <a class="nav-link" asp-controller="Customer" asp-action="ViewVisits">View Visits</a>
+                                <a class="nav-link" asp-controller="Customer" asp-action="Index">Customers</a> 
+                            </nav>
+                        </div>
+                        @* Sub End*@
+                        @* MenuItem End*@
+
+                        @* MenuItem*@
+                        @* Head Start*@
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRepresentive" aria-expanded="false" aria-controls="collapseRepresentive">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Representives
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @* Head End *@
+                        @* Sub Start*@
+                        <div class="collapse" id="collapseRepresentive" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="\Representive">Manage Representive</a>
                             </nav>
                         </div>
                         @* Sub End*@

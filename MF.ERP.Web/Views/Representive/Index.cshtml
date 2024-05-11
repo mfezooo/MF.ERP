@@ -1,8 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Manage Area";
+﻿@model RepresentiveVM;
+@{
+    ViewData["Title"] = "Manage Representive";
 }
 
-<form method="post" id="frmCreate" class="p-3"> 
+<form method="post" id="frmCreate" class="p-3">
     <div class="form-group">
         <label for="nameArInput">NameAr</label>
         <input type="text" class="form-control" id="nameInput" aria-describedby="emailHelp" name="NameAr" placeholder="Enter NameAr" required>
@@ -13,12 +14,16 @@
         <input type="text" class="form-control" id="nameEnInput" aria-describedby="emailHelp" name="NameEn" placeholder="Enter NameEn" required>
         <small id="emailHelp" class="form-text text-muted">Please input value.  </small>
     </div>
-    <div class='col-md-12 col-sm-12'>
-        <div class='form-group'>
-            <label for='GovernmentId'> Government </label>
-            <select name="GovernmentId" class="form-control" asp-items="@(new SelectList(@Model.GovernmentList, "Value", "Text"))"></select>
-            <small id='GovernmentId' class='form-text text-muted'>  </small>
-        </div>
+    <div class="form-group">
+        <label for="emailInput">Email</label>
+        <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" name="Email" placeholder="Enter Email" required>
+        <small id="emailHelp" class="form-text text-muted">Please input value.  </small>
+    </div>
+    <div class="form-group">
+        <label for="isLockedInput">Locked ?</label> 
+        <input type="checkbox" class="form-check" id="isLockedInput" aria-describedby="IsLocked" name="IsLocked" value="false" placeholder="" onchange="this.value = this.checked ? true : false;">
+
+        <small id="IsLockeds" class="form-text text-muted">  </small>
     </div>
     <input type="text" class="form-control" aria-describedby="emailHelp" name="UserCreated" value="@Model.UserCreated" hidden>
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -29,7 +34,7 @@
 <div class="border p-3 mt-4" style="width:100%; overflow-x:scroll;">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class=" ">Customer Types</h2>
+            <h2 class=" ">Representive</h2>
         </div>
     </div>
     <br />
@@ -38,7 +43,7 @@
         <thead>
             <tr>
                 <th>
-                    Serial
+                    Id
                 </th>
                 <th>
                     NameAr
@@ -52,5 +57,5 @@
     </table>
 </div>
 @section Scripts {
-    <script src="~/js/coding/area.js"></script>
+    <script src="~/js/coding/representive.js"></script>
 }

@@ -38,7 +38,7 @@
 
         IEnumerable<TB> ExecuteStored<TB>(string sql) where TB : class;
         int Save();
-        Task SaveAsync();
+        Task<int> SaveAsync();
 
     }
 }

@@ -1,4 +1,5 @@
-﻿ 
+﻿@model CustomerVM;
+
 <button class="tablink" onclick="openPage('customerData', this, 'red')" id="defaultOpen">Customer Data</button>
 <button class="tablink" onclick="openPage('contacts', this, 'green')">Contacts</button>
 <button class="tablink" onclick="openPage('additionalInfo', this, 'blue')">Additional Informations</button>
@@ -12,7 +13,7 @@
             </div>
         </div>
         <div class="row">
-            <input type='Text' class='form-control' id='customerId'  name='CustomerId' value="0" hidden>
+            <input type='Text' class='form-control' id='customerId' name='CustomerId' value="0" hidden>
             <div class='col-md-4 col-sm-12'>
                 <div class='form-group'>
                     <label for='NameAr'> NameAr  </label>
@@ -33,7 +34,7 @@
                     <input type='Text' class='form-control' id='WareHouse' aria-describedby='WareHouse' name='WareHouse' placeholder='Enter WareHouse' required>
                     <small id='WareHouse' class='form-text text-muted'>  </small>
                 </div>
-            </div>
+            </div> 
         </div>
 
         <div class="row">
@@ -41,21 +42,21 @@
             <div class='col-md-4 col-sm-12'>
                 <div class='form-group'>
                     <label for='Group'> Group </label>
-                    <select name='Group' class='form-control' required></select>
+                    <select name="GroupId" class="form-control" asp-items="@(new SelectList(@Model.GroupList, "Value", "Text"))"></select>
                     <small id='Group' class='form-text text-muted'>  </small>
                 </div>
             </div>
             <div class='col-md-4 col-sm-12'>
                 <div class='form-group'>
                     <label for='Representive'> Representive </label>
-                    <select name='Representive' class='form-control' required></select>
+                    <select name="RepresentiveId" class="form-control" asp-items="@(new SelectList(@Model.RepresentiveList, "Value", "Text"))"></select>
                     <small id='Representive' class='form-text text-muted'>  </small>
                 </div>
             </div>
             <div class='col-md-4 col-sm-12'>
                 <div class='form-group'>
                     <label for='Industry'> Industry </label>
-                    <select name='Industry' class='form-control' required></select>
+                    <select name="IndustryId" class="form-control" asp-items="@(new SelectList(@Model.IndustryList, "Value", "Text"))"></select>
                     <small id='Industry' class='form-text text-muted'>  </small>
                 </div>
             </div>
@@ -66,24 +67,34 @@
             <div class='col-md-4 col-sm-12'>
                 <div class='form-group'>
                     <label for='Area'> Area </label>
-                    <select name='Area' class='form-control' required></select>
-                    <option>Select ...</option>
+                    <select name="AreaId" class="form-control" asp-items="@(new SelectList(@Model.AreaList, "Value", "Text"))"></select>
                     <small id='Area' class='form-text text-muted'>  </small>
                 </div>
             </div>
             <div class='col-md-4 col-sm-12'>
                 <div class='form-group'>
-                    <label for='Status'> Status </label>
-                    <select name='Status' class='form-control' required></select>
-                    <small id='Status' class='form-text text-muted'>  </small>
+                    <label for='CustomerType'> CustomerType </label>
+                    <select name="CustomerTypeId" class="form-control" asp-items="@(new SelectList(@Model.CustomerTypeList, "Value", "Text"))"></select>
+                    <small id='CustomerType' class='form-text text-muted'>  </small>
                 </div>
             </div>
-
-        </div>
-
+            <div class='col-md-4 col-sm-12'>
+                <div class='form-group'>
+                    <label for='Status'> Status </label>
+                    <select name="StatusId" class="form-control" asp-items="@(new SelectList(@Model.LastStatusList, "Value", "Text"))"></select>
+                    <small id='StatusId' class='form-text text-muted'>  </small>
+                </div>
+            </div> 
+        </div> 
 
         <div class="row">
-
+            <div class='col-md-4 col-sm-12'>
+                <div class='form-group'>
+                    <label for='StartDate'> StartDate  </label>
+                    <input type='date' class='form-control' id='StartDate' aria-describedby='StartDate' name='StartDate' required>
+                    <small id='StartDate' class='form-text text-muted'>  </small>
+                </div>
+            </div>
             <div class='col-md-4 col-sm-12'>
                 <div class='form-group'>
                     <label>  Location </label>

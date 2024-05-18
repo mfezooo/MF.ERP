@@ -21,6 +21,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Select2.js" Version="4.0.13" />
     <PackageReference Include="sweetalert2" Version="1.0.1" />
   </ItemGroup>
@@ -32,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Resources\Static_Json\" />
     <Folder Include="wwwroot\js\operations\" />
   </ItemGroup>
 

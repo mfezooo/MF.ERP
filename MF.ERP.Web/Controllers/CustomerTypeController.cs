@@ -27,8 +27,11 @@ namespace MF.ERP.Web.Controllers
             {
                 var mapedEntity = _mapper.Map<CustomerType>(entity);
                 _unitOfWork.CustomerTypeRepository.Add(mapedEntity);
-                _unitOfWork.Save();
-                return Json(new { isSuccess = true, message = "Created Successfuly" });
+                int savedCount = _unitOfWork.Save();
+                if (savedCount > 0)
+                    return Json(new { isSuccess = true, message = "Created Successfuly", id = mapedEntity.Id, customerName = mapedEntity.NameAr });
+                return Json(new { isSuccess = true, message = "Error in saving", id = 0, customerName = "" });
+
             }
             return Json(new { isSuccess = false, message = "Error in Creation" });
         }

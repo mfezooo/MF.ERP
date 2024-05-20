@@ -2,8 +2,15 @@
 let controllerName = "/CustomerType";
 $(document).ready(function () {
     loadDataTable();
-});
 
+});
+$(document).on('click', ".btnAction", function () {
+    let sid = $(this).attr('sid');
+    $('#sId').val(sid); 
+    drawModel("Create New", "Cancel");
+
+
+});
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
@@ -42,3 +49,17 @@ $("#frmCreate").submit(function (e) {
     });
 
 });
+
+function drawModel(mTitle, mBtnSecondary, mData, callBack = null) {
+    $('#exampleModalLongTitle').text(mTitle);
+
+    $('#btnSecondary').text(mBtnSecondary);
+    $('#results').html(mData);
+    $('#exampleModalCenter').modal('show');
+    if (callBack != null) {
+        callBack();
+    }
+}
+function hideModel() {
+    $('#exampleModalCenter').modal('hide');
+}

@@ -2,5 +2,6 @@
   "welcome": "Welcome {0}, How are you?",
   "home": "Home",
   "NameAr": "Name Ar",
-  "NameEn": "Name En"
+  "NameEn": "Name En",
+  "CustomerTypes": "Customer Types"
 }

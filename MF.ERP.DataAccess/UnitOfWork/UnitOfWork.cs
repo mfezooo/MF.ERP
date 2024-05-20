@@ -13,6 +13,7 @@ namespace MF.ERP.DataAccess
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
+            ActionsQuestionRepository = new ActionsQuestionRepository(db);
             CustomerRepository = new CustomerRepository(_db);
             CustomerTypeRepository = new CustomerTypeRepository(_db);
             ActionsRepository = new ActionsRepository(_db);
@@ -40,12 +41,11 @@ namespace MF.ERP.DataAccess
             RepresintiveTargetRepository = new RepresintiveTargetRepository(_db);
             StatusRepository = new StatusRepository(_db);
             TartgetTypeRepository = new TartgetTypeRepository(_db);
-            TeamRepository = new TeamRepository(_db);
-            TeamAreaRepository = new TeamAreaRepository(_db);
-            TeamTargetRepository = new TeamTargetRepository(_db);
+           
             TitleRepository = new TitleRepository(_db);
 
         }
+        public IActionsQuestionRepository ActionsQuestionRepository { get; set; }
         public ICustomerRepository CustomerRepository { get; set; }
         public ICustomerTypeRepository CustomerTypeRepository { get; set; }
         public IActionsRepository ActionsRepository { get; set; }
@@ -72,10 +72,7 @@ namespace MF.ERP.DataAccess
         public IRepresentiveRepository RepresentiveRepository { get; set; }
         public IRepresintiveTargetRepository RepresintiveTargetRepository { get; set; }
         public IStatusRepository StatusRepository { get; set; }
-        public ITartgetTypeRepository TartgetTypeRepository { get; set; }
-        public ITeamRepository TeamRepository { get; set; }
-        public ITeamAreaRepository TeamAreaRepository { get; set; }
-        public ITeamTargetRepository TeamTargetRepository { get; set; }
+        public ITartgetTypeRepository TartgetTypeRepository { get; set; } 
         public ITitleRepository TitleRepository { get; set; }
 
 

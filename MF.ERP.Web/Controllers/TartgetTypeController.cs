@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MF.ERP.Web.Controllers
 {
-    public class RepresintiveTargetController : Controller
+    public class TartgetTypeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public RepresintiveTargetController(IUnitOfWork unitOfWork, IMapper mapper)
+        public TartgetTypeController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -21,16 +21,16 @@ namespace MF.ERP.Web.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(RepresintiveTargetVM entity)
+        public IActionResult Create(TartgetTypeVM entity)
         {
             if (ModelState.IsValid)
             {
-                var mapedEntity = _mapper.Map<RepresintiveTarget>(entity);
-                _unitOfWork.RepresintiveTargetRepository.Add(mapedEntity);
+                var mapedEntity = _mapper.Map<TartgetType>(entity);
+                _unitOfWork.TartgetTypeRepository.Add(mapedEntity);
                 int savedCount = _unitOfWork.Save();
                 if (savedCount > 0)
-                    return Json(new { isSuccess = true, message = "Created Successfuly", id = mapedEntity.Id, data = mapedEntity });
-                return Json(new { isSuccess = true, message = "Error in saving", id = 0, data = "" });
+                    return Json(new { isSuccess = true, message = "Created Successfuly", id = mapedEntity.Id, customerName = mapedEntity.NameAr });
+                return Json(new { isSuccess = true, message = "Error in saving", id = 0, customerName = "" });
 
             }
             return Json(new { isSuccess = false, message = "Error in Creation" });
@@ -38,7 +38,7 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var enties = await _unitOfWork.RepresintiveTargetRepository.GetAllAsync();
+            var enties = await _unitOfWork.TartgetTypeRepository.GetAllAsync();
             return Json(enties);
         }
     }

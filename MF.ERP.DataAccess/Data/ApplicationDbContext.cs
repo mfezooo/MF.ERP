@@ -41,10 +41,7 @@ namespace MF.ERP.DataAccess
         public virtual DbSet<Representive> Representivs { set; get; }
         public virtual DbSet<RepresintiveTarget> RepresintiveTarges { set; get; }
         public virtual DbSet<Status> Status { set; get; }
-        public virtual DbSet<TartgetType> TartgetTyps { set; get; }
-        public virtual DbSet<Team> Teams { set; get; }
-        public virtual DbSet<TeamArea> TeamAres { set; get; }
-        public virtual DbSet<TeamTarget> TeamTarges { set; get; }
+        public virtual DbSet<TartgetType> TartgetTyps { set; get; }  
         public virtual DbSet<Title> Titles { set; get; }
 
 

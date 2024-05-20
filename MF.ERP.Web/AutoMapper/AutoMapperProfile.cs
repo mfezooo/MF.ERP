@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using MF.ERP.Models;
+using MF.ERP.Models; 
+using MF.ERP.ViewModels;
 namespace MF.ERP.Web
 {
     public class AutoMapperProfile : Profile
@@ -32,11 +33,9 @@ namespace MF.ERP.Web
             RepresentiveMapper();
             RepresintiveTargetMapper();
             StatusMapper();
-            TartgetTypeMapper();
-            TeamMapper();
-            TeamAreaMapper();
-            TeamTargetMapper();
+            TartgetTypeMapper();  
             TitleMapper();
+            ActionsQuestionMapper();
         }
         private void ActionsMapper()
         {
@@ -175,26 +174,22 @@ namespace MF.ERP.Web
             CreateMap<TartgetTypeVM, TartgetType>().ReverseMap();
         }
 
-        private void TeamMapper()
-        {
-            CreateMap<TeamVM, Team>().ReverseMap();
-        }
+       
 
-        private void TeamAreaMapper()
-        {
-            CreateMap<TeamAreaVM, TeamArea>().ReverseMap();
-        }
+      
 
-        private void TeamTargetMapper()
-        {
-            CreateMap<TeamTargetVM, TeamTarget>().ReverseMap();
-        }
+        
 
         private void TitleMapper()
         {
             CreateMap<TitleVM, Title>().ReverseMap();
         }
 
-
+        private void ActionsQuestionMapper()
+        {
+            CreateMap<ActionsQuestion, ActionsQuestionVm>()
+               .ForMember(dest => dest.QuestionName, opt => opt.MapFrom(src => src.Question!.NameAr)) 
+               .ReverseMap();
+        }
     }
 }

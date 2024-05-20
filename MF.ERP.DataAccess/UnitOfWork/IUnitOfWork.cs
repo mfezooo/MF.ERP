@@ -2,6 +2,7 @@
 {
     public interface IUnitOfWork
     {
+        IActionsQuestionRepository ActionsQuestionRepository { get; }
         ICustomerRepository CustomerRepository { get; }
         ICustomerTypeRepository CustomerTypeRepository { get; }
         IActionsRepository ActionsRepository { get; }
@@ -29,9 +30,7 @@
         IRepresintiveTargetRepository RepresintiveTargetRepository { get; }
         IStatusRepository StatusRepository { get; }
         ITartgetTypeRepository TartgetTypeRepository { get; }
-        ITeamRepository TeamRepository { get; }
-        ITeamAreaRepository TeamAreaRepository { get; }
-        ITeamTargetRepository TeamTargetRepository { get; }
+        
         ITitleRepository TitleRepository { get; }
 
 

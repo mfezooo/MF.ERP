@@ -1,16 +1,18 @@
 ﻿using AutoMapper;
 using MF.ERP.DataAccess;
 using MF.ERP.Models;
+using MF.ERP.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MF.ERP.Web.Controllers
 {
-    public class RepresintiveTargetController : Controller
+    public class ActionsQuestionController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public RepresintiveTargetController(IUnitOfWork unitOfWork, IMapper mapper)
+        public ActionsQuestionController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -21,12 +23,12 @@ namespace MF.ERP.Web.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(RepresintiveTargetVM entity)
+        public IActionResult Create(ActionsQuestionVm entity)
         {
             if (ModelState.IsValid)
             {
-                var mapedEntity = _mapper.Map<RepresintiveTarget>(entity);
-                _unitOfWork.RepresintiveTargetRepository.Add(mapedEntity);
+                var mapedEntity = _mapper.Map<ActionsQuestion>(entity);
+                _unitOfWork.ActionsQuestionRepository.Add(mapedEntity);
                 int savedCount = _unitOfWork.Save();
                 if (savedCount > 0)
                     return Json(new { isSuccess = true, message = "Created Successfuly", id = mapedEntity.Id, data = mapedEntity });
@@ -38,7 +40,7 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var enties = await _unitOfWork.RepresintiveTargetRepository.GetAllAsync();
+            var enties = await _unitOfWork.ActionsQuestionRepository.GetAllAsync();
             return Json(enties);
         }
     }

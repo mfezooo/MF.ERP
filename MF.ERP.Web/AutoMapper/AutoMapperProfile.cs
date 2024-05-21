@@ -149,20 +149,14 @@ namespace MF.ERP.Web
             CreateMap<ProductVM, Product>().ReverseMap();
         }
 
-        private void QuestionMapper()
-        {
-            CreateMap<QuestionVM, Question>().ReverseMap();
-        }
+      
 
         private void RepresentiveMapper()
         {
             CreateMap<RepresentiveVM, Representive>().ReverseMap();
         }
 
-        private void RepresintiveTargetMapper()
-        {
-            CreateMap<RepresintiveTargetVM, RepresintiveTarget>().ReverseMap();
-        }
+       
 
         private void StatusMapper()
         {
@@ -174,22 +168,30 @@ namespace MF.ERP.Web
             CreateMap<TartgetTypeVM, TartgetType>().ReverseMap();
         }
 
-       
-
-      
-
         
-
         private void TitleMapper()
         {
             CreateMap<TitleVM, Title>().ReverseMap();
         }
-
+        private void RepresintiveTargetMapper()
+        {
+            CreateMap<RepresintiveTarget, RepresintiveTargetVM>()
+               .ForMember(dest => dest.RepresentiveName, opt => opt.MapFrom(src => src.Representive!.NameAr))
+               .ForMember(dest => dest.TartgetTypeName, opt => opt.MapFrom(src => src.TartgetType!.NameAr))
+                .ReverseMap();
+        }
         private void ActionsQuestionMapper()
         {
             CreateMap<ActionsQuestion, ActionsQuestionVm>()
                .ForMember(dest => dest.QuestionName, opt => opt.MapFrom(src => src.Question!.NameAr)) 
                .ReverseMap();
+        }
+        private void QuestionMapper()
+        {
+            CreateMap<Question, QuestionVM>()
+               .ForMember(dest => dest.IndustryName, opt => opt.MapFrom(src => src.Industry!.NameAr))
+
+                .ReverseMap();
         }
     }
 }

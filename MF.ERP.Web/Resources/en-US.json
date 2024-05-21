@@ -3,5 +3,9 @@
   "home": "Home",
   "NameAr": "Name Ar",
   "NameEn": "Name En",
-  "CustomerTypes": "Customer Types"
+  "CustomerTypes": "Customer Types",
+  "Questions": "Questions",
+  "ActionTypes": "Action Types",
+  "RepresintiveTarget": "Represintive Target"
+
 }

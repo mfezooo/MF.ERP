@@ -29,7 +29,7 @@
         IRepresentiveRepository RepresentiveRepository { get; }
         IRepresintiveTargetRepository RepresintiveTargetRepository { get; }
         IStatusRepository StatusRepository { get; }
-        ITartgetTypeRepository TartgetTypeRepository { get; }
+        ITartgetTypeRepository TargetTypeRepository { get; }
         
         ITitleRepository TitleRepository { get; }
 

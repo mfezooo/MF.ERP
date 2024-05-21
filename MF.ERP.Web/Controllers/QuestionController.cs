@@ -2,23 +2,29 @@
 using MF.ERP.DataAccess;
 using MF.ERP.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MF.ERP.Web.Controllers
 {
-    public class QuestionsController : Controller
+    public class QuestionController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public QuestionsController(IUnitOfWork unitOfWork, IMapper mapper)
+        public QuestionController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewBag.cUser = "1";
-            return View();
+            QuestionVM questionVM = new QuestionVM()
+            {
+                cUser = 1,
+                IndustryIdList = await slIndustry()
+            };
+            return View(questionVM);
         }
         [HttpPost]
         public IActionResult Create(QuestionVM entity)
@@ -40,6 +46,12 @@ namespace MF.ERP.Web.Controllers
         {
             var enties = await _unitOfWork.QuestionRepository.GetAllAsync();
             return Json(enties);
+        }
+        [HttpGet]
+        public async Task<List<SelectListItem>?> slIndustry()
+        {
+            var items = await _unitOfWork.IndustryRepository.GetAllAsync();
+            return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
         }
     }
 }

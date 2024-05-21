@@ -26,7 +26,7 @@ namespace MF.ERP.Web.Controllers
             if (ModelState.IsValid)
             {
                 var mapedEntity = _mapper.Map<TartgetType>(entity);
-                _unitOfWork.TartgetTypeRepository.Add(mapedEntity);
+                _unitOfWork.TargetTypeRepository.Add(mapedEntity);
                 int savedCount = _unitOfWork.Save();
                 if (savedCount > 0)
                     return Json(new { isSuccess = true, message = "Created Successfuly", id = mapedEntity.Id, customerName = mapedEntity.NameAr });
@@ -38,7 +38,7 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var enties = await _unitOfWork.TartgetTypeRepository.GetAllAsync();
+            var enties = await _unitOfWork.TargetTypeRepository.GetAllAsync();
             return Json(enties);
         }
     }

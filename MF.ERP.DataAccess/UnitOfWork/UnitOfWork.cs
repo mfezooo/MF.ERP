@@ -40,7 +40,7 @@ namespace MF.ERP.DataAccess
             RepresentiveRepository = new RepresentiveRepository(_db);
             RepresintiveTargetRepository = new RepresintiveTargetRepository(_db);
             StatusRepository = new StatusRepository(_db);
-            TartgetTypeRepository = new TartgetTypeRepository(_db);
+            TargetTypeRepository = new TartgetTypeRepository(_db);
            
             TitleRepository = new TitleRepository(_db);
 
@@ -72,10 +72,9 @@ namespace MF.ERP.DataAccess
         public IRepresentiveRepository RepresentiveRepository { get; set; }
         public IRepresintiveTargetRepository RepresintiveTargetRepository { get; set; }
         public IStatusRepository StatusRepository { get; set; }
-        public ITartgetTypeRepository TartgetTypeRepository { get; set; } 
+        public ITartgetTypeRepository TargetTypeRepository { get; set; } 
         public ITitleRepository TitleRepository { get; set; }
-
-
+         
 
         public IEnumerable<TB> ExecuteStored<TB>(string sql) where TB : class
         {

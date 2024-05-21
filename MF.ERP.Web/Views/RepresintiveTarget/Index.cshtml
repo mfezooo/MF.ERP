@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["Title"] = "Manage Customer Types";
+﻿@model RepresintiveTargetVM;
+@{
+    ViewData["Title"] = "Manage Represintive Targets";
 }
 <!-- Button trigger modal -->
 <!-- Modal -->
@@ -8,31 +9,54 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-justify" id="exampleModalLongTitle"> </h5>
-               
+
             </div>
             <div class="modal-body">
                 <div id="results" typeof="submit" style="overflow:hidden; ">
                     <form method="post" id="frmCreate" class="text-justify">
+                        <input type="number" id="cUser" name="cUser" value="@Model.cUser" hidden />
                         <input type="number" id="sId" name="Id" hidden />
+                        <div class='col-md-4 col-sm-12'>
+                            <div class='form-group'>
+                                <label for='Representive'> Representive </label>
+                                <select name="RepresentiveId" class="form-control" asp-items="@(new SelectList(@Model.RepresentiveIdList, "Value", "Text"))"></select>
+                                <small id='Representive' class='form-text text-muted'>  </small>
+                            </div>
+                        </div>
+                        <div class='col-md-4 col-sm-12'>
+                            <div class='form-group'>
+                                <label for='Representive'> Tartget Type  </label>
+                                <select name="TartgetTypeId" class="form-control" asp-items="@(new SelectList(@Model.TartgetTypeIdList, "Value", "Text"))"></select>
+                                <small id='Representive' class='form-text text-muted'>  </small>
+                            </div>
+                        </div>
                         <div class="row">
-                            <div class="col"> 
-                                <label class="control-label"> @localizer["NameAr"]</label>
+                            <div class="col">
+                                <label class="control-label"> Start Tartget </label>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" id="nameInput" aria-describedby="emailHelp" name="NameAr" placeholder="Enter NameAr" required>
+                                    <input type="datetime" class="form-control" id="StartTartgetTime" aria-describedby="StartTartgetTime" name="StartTartgetTime"  required>
                                     <span class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col"> 
-                                <label class="control-label"> @localizer["NameEn"]</label>
+                            <div class="col">
+                                <label class="control-label"> End Tartget  </label>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" id="nameEnInput" aria-describedby="emailHelp" name="NameEn" placeholder="Enter NameEn" required>
+                                    <input type="datetime" class="form-control" id="EndTartgetTime" aria-describedby="EndTartgetTime" name="EndTartgetTime" required>
                                     <span class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
-                     
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label"> Amount  </label>
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control" id="Amount" aria-describedby="Amount" name="Amount" required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col">
                                 <label class="control-label">Actions</label>
@@ -56,12 +80,12 @@
 </div>
 
 @* End Modal*@
- 
+
 
 <div class="border p-3 mt-4" style="width:100%; overflow-x:scroll;">
     <div class="row pt-4   ">
         <div class="col-10">
-            <h2 class=" "> @localizer["CustomerTypes"] </h2> 
+            <h2 class=" "> @localizer["RepresintiveTarget"] </h2>
             <button class="btn btn-primary btnAction ">  <i class="fa fa-plus"></i> Create</button>
 
         </div>
@@ -86,5 +110,5 @@
     </table>
 </div>
 @section Scripts {
-    <script src="~/js/coding/customerType.js"></script>
+    <script src="~/js/coding/represintiveTarget.js"></script>
 }

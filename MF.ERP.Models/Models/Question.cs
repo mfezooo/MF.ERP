@@ -1,8 +1,12 @@
-﻿namespace MF.ERP.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MF.ERP.Models
 {
     public class Question : BaseEntityWithNameArEn
     {
         public int IndustryId { get; set; }
+        [ForeignKey("IndustryId")]
+        public Industry Industry { get; set; }
     }
     public class VisitQuestion : BaseEntity
     {

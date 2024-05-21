@@ -2,6 +2,8 @@
 using MF.ERP.DataAccess;
 using MF.ERP.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Runtime.ConstrainedExecution;
 
 namespace MF.ERP.Web.Controllers
 {
@@ -15,10 +17,16 @@ namespace MF.ERP.Web.Controllers
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewBag.cUser = "1";
-            return View();
+            RepresintiveTargetVM represintiveTargetVM = new RepresintiveTargetVM()
+            {
+                cUser = 1,
+                RepresentiveIdList= await slRepresentive(),
+                TartgetTypeIdList = await slTartgetType()
+            };
+            return View(represintiveTargetVM);
         }
         [HttpPost]
         public IActionResult Create(RepresintiveTargetVM entity)
@@ -40,6 +48,18 @@ namespace MF.ERP.Web.Controllers
         {
             var enties = await _unitOfWork.RepresintiveTargetRepository.GetAllAsync();
             return Json(enties);
+        }
+        [HttpGet]
+        public async Task<List<SelectListItem>?> slRepresentive()
+        {
+            var items = await _unitOfWork.RepresentiveRepository.GetAllAsync();
+            return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
+        }
+        [HttpGet]
+        public async Task<List<SelectListItem>?> slTartgetType()
+        {
+            var items = await _unitOfWork.TargetTypeRepository.GetAllAsync();
+            return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
         }
     }
 }

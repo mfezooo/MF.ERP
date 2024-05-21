@@ -3,7 +3,10 @@
   "home": "الرئيسيه",
   "NameAr": "الاسم عربي",
   "NameEn": "الاسم انجليزي",
-  "CustomerTypes": "انواع العملاء"
+  "CustomerTypes": "انواع العملاء",
+  "Questions": "اسئله المقابلات",
+  "ActionTypes": "انواع الاجراءات",
+  "RepresintiveTarget": "تارجيت المندوب"
 
 
 }

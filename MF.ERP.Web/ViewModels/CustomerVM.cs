@@ -6,7 +6,7 @@ namespace MF.ERP.Web
     {
         public int CustomerId { get; set; }
         public string Email { get; set; } = string.Empty;
-        public DateTime WarehouseAvilableTill { get; set; }  
+        public TimeSpan WarehouseAvilableTill { get; set; }  
         public string Address { get; set; } = string.Empty;
         public string Note { get; set; } = string.Empty;
         public string CompaniesCompetation { get; set; } = string.Empty;

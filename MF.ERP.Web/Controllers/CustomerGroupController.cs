@@ -23,12 +23,21 @@ namespace MF.ERP.Web.Controllers
         [HttpPost]
         public IActionResult Create(CustomerGroupVM entity)
         {
+            if (entity.Id == 0)
+                ModelState.Remove("id");
             if (ModelState.IsValid)
             {
                 var mapedEntity = _mapper.Map<CustomerGroup>(entity);
-                _unitOfWork.CustomerGroupRepository.Add(mapedEntity);
-                _unitOfWork.Save();
-                return Json(new { isSuccess = true, message = "Created Successfuly" });
+                if (entity.Id != 0)
+                    _unitOfWork.CustomerGroupRepository.Update(mapedEntity);
+                else
+                    _unitOfWork.CustomerGroupRepository.Add(mapedEntity);
+
+                int savedCount = _unitOfWork.Save();
+                if (savedCount > 0)
+                    return Json(new { isSuccess = true, message = "Created Successfuly" });
+                return Json(new { isSuccess = true, message = "Error in saving" });
+
             }
             return Json(new { isSuccess = false, message = "Error in Creation" });
         }
@@ -37,6 +46,22 @@ namespace MF.ERP.Web.Controllers
         {
             var enties = await _unitOfWork.CustomerGroupRepository.GetAllAsync();
             return Json(enties);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var enties = await _unitOfWork.CustomerGroupRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            return Json(enties);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var enties = await _unitOfWork.CustomerGroupRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            _unitOfWork.CustomerGroupRepository.Remove(enties!);
+            int savedCount = _unitOfWork.Save();
+            if (savedCount > 0)
+                return Json(new { isSuccess = true, message = "Deleted Successfuly" });
+            return Json(new { isSuccess = true, message = "Error in saving" });
         }
     }
 }

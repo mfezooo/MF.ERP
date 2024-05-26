@@ -7,6 +7,10 @@
   "CustomerTypes": "انواع العملاء",
   "Questions": "اسئله المقابلات",
   "ActionTypes": "انواع الاجراءات",
+  "Government": "المحافظات",
+  "Industry": "مجال التصنيع",
+  "Job": "الوظيفه",
+  "CustomerGroup": "مجموعات العملاء",
   "RepresintiveTarget": "تارجيت المندوب",
   "Create": "انشاء",
   "Save": "حفظ",
@@ -14,7 +18,8 @@
   "Cancel": "الغاء",
   "CreateTitle": "انشاء جديد",
   "EditTitle": "تعديل",
-  "CustomerStatus": "حالات العملاء"
-
+  "CustomerStatus": "حالات العملاء",
+  "IsFinalAction": "اجراء نهائي؟!",
+  "IsNeedApprove": "يحتاج موافقه مدير؟"
 
 }

@@ -1,5 +1,5 @@
 ﻿var dataTable;
-let controllerName = "/CustomerGroup";
+let controllerName = "/ActionType";
 $(document).ready(function () {
     loadDataTable();
 

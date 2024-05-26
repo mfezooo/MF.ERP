@@ -8,12 +8,18 @@
   "CustomerStatus": "Customer Status",
   "Questions": "Questions",
   "ActionTypes": "Action Types",
+  "Government": "Government",
+  "Industry": "Industry",
+  "Job": "Job",
+  "CustomerGroup": "Customer Group",
   "RepresintiveTarget": "Represintive Target",
   "Create": "Create",
   "Save": "Save",
   "Actions": "Actions",
   "Cancel": "Cancel",
   "CreateTitle": "Create New",
-  "EditTitle": "Edit"
+  "EditTitle": "Edit",
+  "IsFinalAction": "Is Final Action",
+  "IsNeedApprove": "Is Need Approve"
 
 }

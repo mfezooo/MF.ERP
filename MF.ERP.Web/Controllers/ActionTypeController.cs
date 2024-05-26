@@ -23,14 +23,20 @@ namespace MF.ERP.Web.Controllers
         [HttpPost]
         public IActionResult Create(ActionTypeVM entity)
         {
+            if (entity.Id == 0)
+                ModelState.Remove("id");
             if (ModelState.IsValid)
             {
                 var mapedEntity = _mapper.Map<ActionType>(entity);
-                _unitOfWork.ActionTypeRepository.Add(mapedEntity);
+                if (entity.Id != 0)
+                    _unitOfWork.ActionTypeRepository.Update(mapedEntity);
+                else
+                    _unitOfWork.ActionTypeRepository.Add(mapedEntity);
+
                 int savedCount = _unitOfWork.Save();
                 if (savedCount > 0)
-                    return Json(new { isSuccess = true, message = "Created Successfuly", id = mapedEntity.Id, customerName = mapedEntity.NameAr });
-                return Json(new { isSuccess = true, message = "Error in saving", id = 0, customerName = "" });
+                    return Json(new { isSuccess = true, message = "Created Successfuly" });
+                return Json(new { isSuccess = true, message = "Error in saving" });
 
             }
             return Json(new { isSuccess = false, message = "Error in Creation" });
@@ -41,6 +47,21 @@ namespace MF.ERP.Web.Controllers
             var enties = await _unitOfWork.ActionTypeRepository.GetAllAsync();
             return Json(enties);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var enties = await _unitOfWork.ActionTypeRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            return Json(enties);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var enties = await _unitOfWork.ActionTypeRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            _unitOfWork.ActionTypeRepository.Remove(enties!);
+            int savedCount = _unitOfWork.Save();
+            if (savedCount > 0)
+                return Json(new { isSuccess = true, message = "Deleted Successfuly" });
+            return Json(new { isSuccess = true, message = "Error in saving" });
+        }
     }
 }
- 

@@ -11,7 +11,12 @@
   "Government": "Government",
   "Industry": "Industry",
   "Job": "Job",
+  "TargetType": "Target Type",
   "CustomerGroup": "Customer Group",
+  "Area": "Area",
+  "Products": "Products",
+  "Product": "Product",
+  "ActionStatus": "Action Status",
   "RepresintiveTarget": "Represintive Target",
   "Create": "Create",
   "Save": "Save",
@@ -20,6 +25,17 @@
   "CreateTitle": "Create New",
   "EditTitle": "Edit",
   "IsFinalAction": "Is Final Action",
-  "IsNeedApprove": "Is Need Approve"
-
+  "IsNeedApprove": "Is Need Approve",
+  "Governments": "Governments",
+  "Spects": "Spects",
+  "PackId": "Packs",
+  "Pack": "Pack",
+  "SellPrice": "SellPrice",
+  "BuyPrice": "BuyPrice",
+  "Quantity": "Quantity",
+  "AvilableQuantity": "AvilableQuantity",
+  "Represintive": "Represintive",
+  "StartTargetTime": "StartTargetTime",
+  "EndTargetTime": "EndTargetTime",
+  "Target.Amount": "Amount"
 }

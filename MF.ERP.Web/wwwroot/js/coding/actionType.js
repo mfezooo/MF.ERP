@@ -11,7 +11,9 @@ $(document).on('click', ".btnCreate", function () {
 function clear() {
     $('#sId').val(0);
     $('#nameInput').val('');
-    $('#nameEnInput').val('');
+    $('#nameEnInput').val(''); 
+    $("#isFinalActionInput").prop("checked", false);
+    $("#isNeedApproveInput").prop("checked", false); 
 }
 
 $(document).on('click', ".btnEdit", function () {
@@ -30,6 +32,8 @@ function fillNameArEn(entity) {
     $('#sId').val(entity.id);
     $('#nameInput').val(entity.nameAr);
     $('#nameEnInput').val(entity.nameEn);
+    $("#isFinalActionInput").prop("checked", entity.isFinalAction);
+    $("#isNeedApproveInput").prop("checked", entity.isNeedApprove); 
     drawModel("Edit");
 }
 

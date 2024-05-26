@@ -3,6 +3,7 @@ using MF.ERP.DataAccess;
 using MF.ERP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace MF.ERP.Web.Controllers
 {
@@ -29,14 +30,20 @@ namespace MF.ERP.Web.Controllers
         [HttpPost]
         public IActionResult Create(QuestionVM entity)
         {
+            if (entity.Id == 0)
+                ModelState.Remove("id");
             if (ModelState.IsValid)
             {
                 var mapedEntity = _mapper.Map<Question>(entity);
-                _unitOfWork.QuestionRepository.Add(mapedEntity);
+                if (entity.Id != 0)
+                    _unitOfWork.QuestionRepository.Update(mapedEntity);
+                else
+                    _unitOfWork.QuestionRepository.Add(mapedEntity);
+
                 int savedCount = _unitOfWork.Save();
                 if (savedCount > 0)
-                    return Json(new { isSuccess = true, message = "Created Successfuly", id = mapedEntity.Id, customerName = mapedEntity.NameAr });
-                return Json(new { isSuccess = true, message = "Error in saving", id = 0, customerName = "" });
+                    return Json(new { isSuccess = true, message = "Created Successfuly" });
+                return Json(new { isSuccess = true, message = "Error in saving" });
 
             }
             return Json(new { isSuccess = false, message = "Error in Creation" });
@@ -44,8 +51,26 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var enties = await _unitOfWork.QuestionRepository.GetAllAsync();
+            var enties = await _unitOfWork.QuestionRepository.GetAllAsync(
+                include: x => x.Include(z => z.Industry!));
+            var mapedEntites = _mapper.Map<List<QuestionVM>>(enties);
+            return Json(mapedEntites);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var enties = await _unitOfWork.QuestionRepository.GetFirstOrDefaultAsync(x => x.Id == id);
             return Json(enties);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var enties = await _unitOfWork.QuestionRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            _unitOfWork.QuestionRepository.Remove(enties!);
+            int savedCount = _unitOfWork.Save();
+            if (savedCount > 0)
+                return Json(new { isSuccess = true, message = "Deleted Successfuly" });
+            return Json(new { isSuccess = true, message = "Error in saving" });
         }
         [HttpGet]
         public async Task<List<SelectListItem>?> slIndustry()

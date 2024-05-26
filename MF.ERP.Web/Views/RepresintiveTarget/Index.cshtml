@@ -2,67 +2,69 @@
 @{
     ViewData["Title"] = "Manage Represintive Targets";
 }
+
 <!-- Button trigger modal -->
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-justify" id="exampleModalLongTitle"> </h5>
+                <h5 class="modal-title text-justify" id="ModalTitleCreate"> @localizer["CreateTitle"]</h5>
+                <h5 class="modal-title text-justify" id="ModalTitleEdit">   @localizer["EditTitle"]</h5>
 
             </div>
             <div class="modal-body">
                 <div id="results" typeof="submit" style="overflow:hidden; ">
                     <form method="post" id="frmCreate" class="text-justify">
-                        <input type="number" id="cUser" name="cUser" value="@Model.cUser" hidden />
                         <input type="number" id="sId" name="Id" hidden />
-                        <div class='col-md-4 col-sm-12'>
+                        <div class='col-md-12  '>
                             <div class='form-group'>
-                                <label for='Representive'> Representive </label>
-                                <select name="RepresentiveId" class="form-control" asp-items="@(new SelectList(@Model.RepresentiveIdList, "Value", "Text"))"></select>
+                                <label for='Representive'> @localizer["Representive"] </label>
+                                <select id="representiveId" name="RepresentiveId" class="form-control" asp-items="@(new SelectList(@Model.RepresentiveIdList, "Value", "Text"))"></select>
                                 <small id='Representive' class='form-text text-muted'>  </small>
                             </div>
                         </div>
-                        <div class='col-md-4 col-sm-12'>
+                        <div class='col-md-12'>
                             <div class='form-group'>
-                                <label for='Representive'> Tartget Type  </label>
-                                <select name="TartgetTypeId" class="form-control" asp-items="@(new SelectList(@Model.TartgetTypeIdList, "Value", "Text"))"></select>
+                                <label for='Representive'> @localizer["TargetType"]   </label>
+                                <select id="targetTypeId" name="TargetTypeId" class="form-control" asp-items="@(new SelectList(@Model.TargetTypeIdList, "Value", "Text"))"></select>
                                 <small id='Representive' class='form-text text-muted'>  </small>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label class="control-label"> Start Tartget </label>
+                                <label class="control-label"> @localizer["StartTarget"]  </label>
                                 <div class="col-md-12">
-                                    <input type="datetime" class="form-control" id="StartTartgetTime" aria-describedby="StartTartgetTime" name="StartTartgetTime"  required>
+                                    <input type="date" class="form-control" id="startTargetTime" aria-describedby="StartTargetTime" name="StartTargetTime" required>
                                     <span class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label class="control-label"> End Tartget  </label>
+                                <label class="control-label">@localizer["EndTarget"] </label>
                                 <div class="col-md-12">
-                                    <input type="datetime" class="form-control" id="EndTartgetTime" aria-describedby="EndTartgetTime" name="EndTartgetTime" required>
+                                    <input type="date" class="form-control" id="endTargetTime" aria-describedby="EndTargetTime" name="EndTargetTime" required>
                                     <span class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label class="control-label"> Amount  </label>
+                                <label class="control-label">@localizer["Amount"]   </label>
                                 <div class="col-md-12">
-                                    <input type="number" class="form-control" id="Amount" aria-describedby="Amount" name="Amount" required>
+                                    <input type="number" class="form-control" id="amount" aria-describedby="Amount" name="Amount" required>
                                     <span class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col">
-                                <label class="control-label">Actions</label>
+                                <label class="control-label"> </label>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary form-control">
-                                        <i class="fa fa-money"></i>Create
+                                        <i class="fa fa-money"></i> @localizer["Save"]
                                     </button>
                                     <span class="text-danger"></span>
                                 </div>
@@ -72,8 +74,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="btnSecondary" data-dismiss="modal" onclick="hideModel()"> </button>
-                @*<button type="button" class="btn btn-primary btnConfirm" id="btnPrimary"> </button>*@
+                <button type="button" class="btn btn-secondary" id="btnSecondary" data-dismiss="modal" onclick="hideModel()">@localizer["Cancel"]</button>
             </div>
         </div>
     </div>
@@ -83,11 +84,12 @@
 
 
 <div class="border p-3 mt-4" style="width:100%; overflow-x:scroll;">
-    <div class="row pt-4   ">
-        <div class="col-10">
-            <h2 class=" "> @localizer["RepresintiveTarget"] </h2>
-            <button class="btn btn-primary btnAction ">  <i class="fa fa-plus"></i> Create</button>
-
+    <div class="row pt-4">
+        <div class="col-10 d-flex justify-content-start align-items-center">
+            <h2>@localizer["RepresintiveTarget"]</h2>
+        </div>
+        <div class="col-2 d-flex justify-content-end align-items-center">
+            <button class="btn btn-primary btnCreate"><i class="fa fa-plus"></i> @localizer["Create"]</button>
         </div>
     </div>
     <br />
@@ -96,13 +98,25 @@
         <thead>
             <tr>
                 <th>
-                    Id
+                    @localizer["Id"]
                 </th>
                 <th>
-                    NameAr
+                    @localizer["Represintive"]
                 </th>
                 <th>
-                    NameEn
+                    @localizer["TargetType"]
+                </th>
+                <th>
+                    @localizer["StartTargetTime"]
+                </th>
+                <th>
+                    @localizer["EndTargetTime"]
+                </th>
+                <th>
+                    @localizer["Target.Amount"]
+                </th>
+                <th>
+                    @localizer["Actions"]
                 </th>
             </tr>
 

@@ -1,5 +1,5 @@
 ﻿var dataTable;
-let controllerName = "/Area";
+let controllerName = "/ActionStatus";
 $(document).ready(function () {
     loadDataTable();
 
@@ -47,9 +47,8 @@ function loadDataTable() {
         "order": [[0, 'desc']],
         "columns": [
             { "data": "id", "width": "10%" },
-            { "data": "nameAr", "width": "30%" },
-            { "data": "nameEn", "width": "30%" },
-            { "data": "governmentName", "width": "30%" },
+            { "data": "nameAr", "width": "40%" },
+            { "data": "nameEn", "width": "40%" },
             {
                 title: "", "width": "10%",
                 render: function (data, type, full) {

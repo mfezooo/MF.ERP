@@ -1,5 +1,5 @@
 ﻿var dataTable;
-let controllerName = "/Area";
+let controllerName = "/Product";
 $(document).ready(function () {
     loadDataTable();
 
@@ -12,12 +12,17 @@ function clear() {
     $('#sId').val(0);
     $('#nameInput').val('');
     $('#nameEnInput').val('');
+    $('#spectsInput').val('');
+    $('#packInput').val('');
+    $('#buyPriceInput').val(0);
+    $('#sellPriceInput').val(0);
+    $('#avilableQuantityInput').val(0);
 }
 
 $(document).on('click', ".btnEdit", function () {
     clear();
     let sid = $(this).attr('sid');
-    getEntityById(controllerName, sid, fillNameArEn, showErrorMessage)
+    getEntityById(controllerName, sid, filldata, showErrorMessage)
 
 });
 $(document).on('click', ".btnDelete", function () {
@@ -26,10 +31,16 @@ $(document).on('click', ".btnDelete", function () {
     deleteById(controllerName, sid, deleteEntity, showErrorMessage)
 
 });
-function fillNameArEn(entity) {
+function filldata(entity) {
     $('#sId').val(entity.id);
     $('#nameInput').val(entity.nameAr);
     $('#nameEnInput').val(entity.nameEn);
+
+    $('#spectsInput').val(entity.spects);
+    $('#packInput').val(entity.pack);
+    $('#buyPriceInput').val(entity.buyPrice);
+    $('#sellPriceInput').val(entity.sellPrice);
+    $('#avilableQuantityInput').val(entity.avilableQuantity);
     drawModel("Edit");
 }
 
@@ -47,9 +58,13 @@ function loadDataTable() {
         "order": [[0, 'desc']],
         "columns": [
             { "data": "id", "width": "10%" },
-            { "data": "nameAr", "width": "30%" },
-            { "data": "nameEn", "width": "30%" },
-            { "data": "governmentName", "width": "30%" },
+            { "data": "nameAr" }, 
+
+            { "data": "pack" },
+            { "data": "buyPrice" },
+            { "data": "sellPrice" },
+            { "data": "avilableQuantity" },
+
             {
                 title: "", "width": "10%",
                 render: function (data, type, full) {

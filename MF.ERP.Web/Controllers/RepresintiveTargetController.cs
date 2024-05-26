@@ -3,6 +3,7 @@ using MF.ERP.DataAccess;
 using MF.ERP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Runtime.ConstrainedExecution;
 
 namespace MF.ERP.Web.Controllers
@@ -24,21 +25,27 @@ namespace MF.ERP.Web.Controllers
             {
                 cUser = 1,
                 RepresentiveIdList= await slRepresentive(),
-                TartgetTypeIdList = await slTartgetType()
+                TargetTypeIdList = await slTargetType()
             };
             return View(represintiveTargetVM);
         }
         [HttpPost]
         public IActionResult Create(RepresintiveTargetVM entity)
         {
+            if (entity.Id == 0)
+                ModelState.Remove("id");
             if (ModelState.IsValid)
             {
                 var mapedEntity = _mapper.Map<RepresintiveTarget>(entity);
-                _unitOfWork.RepresintiveTargetRepository.Add(mapedEntity);
+                if (entity.Id != 0)
+                    _unitOfWork.RepresintiveTargetRepository.Update(mapedEntity);
+                else
+                    _unitOfWork.RepresintiveTargetRepository.Add(mapedEntity);
+
                 int savedCount = _unitOfWork.Save();
-                if (savedCount > 0)
-                    return Json(new { isSuccess = true, message = "Created Successfuly", id = mapedEntity.Id, data = mapedEntity });
-                return Json(new { isSuccess = true, message = "Error in saving", id = 0, data = "" });
+                 if (savedCount > 0)
+                    return Json(new { isSuccess = true, message = "Created Successfuly" });
+                return Json(new { isSuccess = true, message = "Error in saving" });
 
             }
             return Json(new { isSuccess = false, message = "Error in Creation" });
@@ -46,8 +53,26 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var enties = await _unitOfWork.RepresintiveTargetRepository.GetAllAsync();
+            var enties = await _unitOfWork.RepresintiveTargetRepository.GetAllAsync(
+                include: x => x.Include(z => z.TargetType!).Include(w=>w.Representive!));
+            var mapedEntites = _mapper.Map<List<RepresintiveTargetVM>>(enties);
+            return Json(mapedEntites);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var enties = await _unitOfWork.RepresintiveTargetRepository.GetFirstOrDefaultAsync(x => x.Id == id);
             return Json(enties);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var enties = await _unitOfWork.RepresintiveTargetRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            _unitOfWork.RepresintiveTargetRepository.Remove(enties!);
+            int savedCount = _unitOfWork.Save();
+            if (savedCount > 0)
+                return Json(new { isSuccess = true, message = "Deleted Successfuly" });
+            return Json(new { isSuccess = true, message = "Error in saving" });
         }
         [HttpGet]
         public async Task<List<SelectListItem>?> slRepresentive()
@@ -56,7 +81,7 @@ namespace MF.ERP.Web.Controllers
             return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
         }
         [HttpGet]
-        public async Task<List<SelectListItem>?> slTartgetType()
+        public async Task<List<SelectListItem>?> slTargetType()
         {
             var items = await _unitOfWork.TargetTypeRepository.GetAllAsync();
             return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();

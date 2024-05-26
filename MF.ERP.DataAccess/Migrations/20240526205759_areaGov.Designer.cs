@@ -4,6 +4,7 @@ using MF.ERP.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MF.ERP.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240526205759_areaGov")]
+    partial class areaGov
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1142,14 +1145,6 @@ namespace MF.ERP.DataAccess.Migrations
                     b.Property<int?>("ModifyCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("NameAr")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameEn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("OrderBy")
                         .HasColumnType("int");
 
@@ -1297,7 +1292,7 @@ namespace MF.ERP.DataAccess.Migrations
                     b.Property<DateTime?>("CreatedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("EndTargetTime")
+                    b.Property<DateTime>("EndTartgetTime")
                         .HasColumnType("datetime2");
 
                     b.Property<bool?>("IsDeleted")
@@ -1318,10 +1313,10 @@ namespace MF.ERP.DataAccess.Migrations
                     b.Property<int>("RepresentiveId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("StartTargetTime")
+                    b.Property<DateTime>("StartTartgetTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("TargetTypeId")
+                    b.Property<int?>("TartgetTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserCreated")
@@ -1332,7 +1327,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasIndex("RepresentiveId");
 
-                    b.HasIndex("TargetTypeId");
+                    b.HasIndex("TartgetTypeId");
 
                     b.ToTable("RepresintiveTarges");
                 });
@@ -1380,7 +1375,7 @@ namespace MF.ERP.DataAccess.Migrations
                     b.ToTable("Status");
                 });
 
-            modelBuilder.Entity("MF.ERP.Models.TargetType", b =>
+            modelBuilder.Entity("MF.ERP.Models.TartgetType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1420,7 +1415,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TargetTypes");
+                    b.ToTable("TartgetTyps");
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Title", b =>
@@ -1776,13 +1771,13 @@ namespace MF.ERP.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MF.ERP.Models.TargetType", "TargetType")
+                    b.HasOne("MF.ERP.Models.TartgetType", "TartgetType")
                         .WithMany()
-                        .HasForeignKey("TargetTypeId");
+                        .HasForeignKey("TartgetTypeId");
 
                     b.Navigation("Representive");
 
-                    b.Navigation("TargetType");
+                    b.Navigation("TartgetType");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

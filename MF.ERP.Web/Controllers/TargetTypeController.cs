@@ -2,42 +2,36 @@
 using MF.ERP.DataAccess;
 using MF.ERP.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace MF.ERP.Web.Controllers
 {
-    public class AreaController : Controller
+    public class TargetTypeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public AreaController(IUnitOfWork unitOfWork, IMapper mapper)
+        public TargetTypeController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            AreaVM vm = new AreaVM()
-            {
-                UserCreated = "1",
-                GovernmentList = await slGoverments()
-            }; 
-            return View(vm);
+            ViewBag.cUser = "1";
+            return View();
         }
         [HttpPost]
-        public IActionResult Create(AreaVM entity)
+        public IActionResult Create(TargetTypeVM entity)
         {
             if (entity.Id == 0)
                 ModelState.Remove("id");
             if (ModelState.IsValid)
             {
-                var mapedEntity = _mapper.Map<Area>(entity);
+                var mapedEntity = _mapper.Map<TargetType>(entity);
                 if (entity.Id != 0)
-                    _unitOfWork.AreaRepository.Update(mapedEntity);
+                    _unitOfWork.TargetTypeRepository.Update(mapedEntity);
                 else
-                    _unitOfWork.AreaRepository.Add(mapedEntity);
+                    _unitOfWork.TargetTypeRepository.Add(mapedEntity);
 
                 int savedCount = _unitOfWork.Save();
                 if (savedCount > 0)
@@ -50,32 +44,24 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var enties = await _unitOfWork.AreaRepository.GetAllAsync(
-                include:x=>x.Include(z=>z.Government!));
-            var mapedEntites = _mapper.Map<List<AreaVM>>(enties); 
-            return Json(mapedEntites);
+            var enties = await _unitOfWork.TargetTypeRepository.GetAllAsync();
+            return Json(enties);
         }
         [HttpGet]
         public async Task<IActionResult> GetById(int id)
         {
-            var enties = await _unitOfWork.AreaRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            var enties = await _unitOfWork.TargetTypeRepository.GetFirstOrDefaultAsync(x => x.Id == id);
             return Json(enties);
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var enties = await _unitOfWork.AreaRepository.GetFirstOrDefaultAsync(x => x.Id == id);
-            _unitOfWork.AreaRepository.Remove(enties!);
+            var enties = await _unitOfWork.TargetTypeRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            _unitOfWork.TargetTypeRepository.Remove(enties!);
             int savedCount = _unitOfWork.Save();
             if (savedCount > 0)
                 return Json(new { isSuccess = true, message = "Deleted Successfuly" });
             return Json(new { isSuccess = true, message = "Error in saving" });
-        }
-        [HttpGet]
-        public async Task<List<SelectListItem>?> slGoverments()
-        {
-            var items = await _unitOfWork.GovernmentRepository.GetAllAsync();
-            return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
         }
     }
 }

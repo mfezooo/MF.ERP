@@ -1,6 +1,6 @@
-﻿ @model AreaVM
+﻿
 @{
-    ViewData["Title"] = "Manage Area";
+    ViewData["Title"] = "Manage Target Type";
 }
 <!-- Button trigger modal -->
 <!-- Modal -->
@@ -34,16 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <label class="control-label"> @localizer["Governments"]</label>
-                                <div class="col-md-12">
-                                    <select name="GovernmentId" class="form-control" asp-items="@(new SelectList(@Model.GovernmentList, "Value", "Text"))" required></select>
-                                    <small id='GovernmentId' class='form-text text-muted'>  </small>
-                                </div>
-                            </div>
-                        </div>
-                      
+
                         <div class="row">
                             <div class="col">
                                 <label class="control-label"> </label>
@@ -71,7 +62,7 @@
 <div class="border p-3 mt-4" style="width:100%; overflow-x:scroll;">
     <div class="row pt-4">
         <div class="col-10 d-flex justify-content-start align-items-center">
-            <h2>@localizer["Area"]</h2>
+            <h2>@localizer["TargetType"]</h2>
         </div>
         <div class="col-2 d-flex justify-content-end align-items-center">
             <button class="btn btn-primary btnCreate"><i class="fa fa-plus"></i> @localizer["Create"]</button>
@@ -90,9 +81,6 @@
                 </th>
                 <th>
                     @localizer["NameEn"]
-                </th> 
-                <th>
-                    @localizer["Government"]
                 </th>
                 <th>
                     @localizer["Actions"]
@@ -103,6 +91,5 @@
     </table>
 </div>
 @section Scripts {
-    <script src="~/js/coding/area.js"></script>
+    <script src="~/js/coding/targetType.js"></script>
 }
- 

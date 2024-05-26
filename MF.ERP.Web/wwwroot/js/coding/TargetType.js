@@ -1,30 +1,30 @@
 ﻿var dataTable;
-let controllerName = "/Area";
+let controllerName = "/TargetType";
 $(document).ready(function () {
     loadDataTable();
 
 });
-$(document).on('click', ".btnCreate", function () {
+$(document).on('click', ".btnCreate", function () {  
     clear();
-    drawModel("CreateNew");
+    drawModel("CreateNew"); 
 });
 function clear() {
     $('#sId').val(0);
     $('#nameInput').val('');
     $('#nameEnInput').val('');
 }
-
+ 
 $(document).on('click', ".btnEdit", function () {
     clear();
     let sid = $(this).attr('sid');
-    getEntityById(controllerName, sid, fillNameArEn, showErrorMessage)
-
+    getEntityById(controllerName, sid, fillNameArEn, showErrorMessage) 
+   
 });
 $(document).on('click', ".btnDelete", function () {
     clear();
     let sid = $(this).attr('sid');
-    deleteById(controllerName, sid, deleteEntity, showErrorMessage)
-
+    deleteById(controllerName, sid, deleteEntity, showErrorMessage)  
+   
 });
 function fillNameArEn(entity) {
     $('#sId').val(entity.id);
@@ -47,9 +47,8 @@ function loadDataTable() {
         "order": [[0, 'desc']],
         "columns": [
             { "data": "id", "width": "10%" },
-            { "data": "nameAr", "width": "30%" },
-            { "data": "nameEn", "width": "30%" },
-            { "data": "governmentName", "width": "30%" },
+            { "data": "nameAr", "width": "40%" },
+            { "data": "nameEn", "width": "40%" },
             {
                 title: "", "width": "10%",
                 render: function (data, type, full) {
@@ -102,7 +101,7 @@ function drawModel(mTitle, mData, callBack = null) {
     $('#exampleModalLongTitle').text(mTitle);
 
     $('#results').html(mData);
-
+   
     $('#exampleModalCenter').modal('show');
     if (callBack != null) {
         callBack();
@@ -112,3 +111,4 @@ function hideModel() {
 
     $('#exampleModalCenter').modal('hide');
 }
+ 

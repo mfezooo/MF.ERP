@@ -10,6 +10,11 @@
   "Government": "المحافظات",
   "Industry": "مجال التصنيع",
   "Job": "الوظيفه",
+  "TargetType": "نوع التارجت",
+  "Area": "المناطق",
+  "ActionStatus": "حاله الاجراء",
+  "Products": "المنتجات",
+  "Product": "المنتج",
   "CustomerGroup": "مجموعات العملاء",
   "RepresintiveTarget": "تارجيت المندوب",
   "Create": "انشاء",
@@ -20,6 +25,18 @@
   "EditTitle": "تعديل",
   "CustomerStatus": "حالات العملاء",
   "IsFinalAction": "اجراء نهائي؟!",
-  "IsNeedApprove": "يحتاج موافقه مدير؟"
+  "IsNeedApprove": "يحتاج موافقه مدير؟",
+  "Governments": "المحافظات",
+  "Spects": "المواصفات",
+  "PackId": "العبوه",
+  "Pack": "العبوه",
+  "SellPrice": "سعر البيع",
+  "BuyPrice": "سعر الشراء",
+  "Quantity": "الكميه",
+  "AvilableQuantity": "الكميه المتاحه",
+  "Represintive": "المندوب",
+  "StartTargetTime": "بدايه",
+  "EndTargetTime": "نهايه",
+  "Target.Amount": "القيمه"
 
 }

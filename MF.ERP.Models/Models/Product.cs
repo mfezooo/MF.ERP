@@ -1,6 +1,6 @@
 ﻿namespace MF.ERP.Models
 {
-    public class Product : BaseEntity
+    public class Product : BaseEntityWithNameArEn
     {
         public string Spects { get; set; } = string.Empty;
         public int? PackId { get; set; }

@@ -54,7 +54,11 @@ namespace MF.ERP.Web
 
         private void AreaMapper()
         {
-            CreateMap<AreaVM, Area>().ReverseMap();
+            CreateMap<AreaVM, Area>()
+                   .ReverseMap()
+                   .ForMember(d => d.GovernmentName, opt => opt.MapFrom(src =>src.Government!.NameAr))
+                   
+                   ;
         }
 
         private void ConsumeMapper()
@@ -165,7 +169,7 @@ namespace MF.ERP.Web
 
         private void TartgetTypeMapper()
         {
-            CreateMap<TartgetTypeVM, TartgetType>().ReverseMap();
+            CreateMap<TargetTypeVM, TargetType>().ReverseMap();
         }
 
         
@@ -175,10 +179,12 @@ namespace MF.ERP.Web
         }
         private void RepresintiveTargetMapper()
         {
-            CreateMap<RepresintiveTarget, RepresintiveTargetVM>()
+            CreateMap<RepresintiveTargetVM,RepresintiveTarget>()
+            
+                .ReverseMap()
                .ForMember(dest => dest.RepresentiveName, opt => opt.MapFrom(src => src.Representive!.NameAr))
-               .ForMember(dest => dest.TartgetTypeName, opt => opt.MapFrom(src => src.TartgetType!.NameAr))
-                .ReverseMap();
+               .ForMember(dest => dest.TargetTypeName, opt => opt.MapFrom(src => src.TargetType!.NameAr))
+                ; 
         }
         private void ActionsQuestionMapper()
         {
@@ -187,11 +193,13 @@ namespace MF.ERP.Web
                .ReverseMap();
         }
         private void QuestionMapper()
-        {
-            CreateMap<Question, QuestionVM>()
-               .ForMember(dest => dest.IndustryName, opt => opt.MapFrom(src => src.Industry!.NameAr))
+        { 
+            CreateMap<QuestionVM, Question>()
+                  .ReverseMap()
+                  .ForMember(d => d.IndustryName, opt => opt.MapFrom(src => src.Industry!.NameAr))
 
-                .ReverseMap();
+                  ;
         }
+       
     }
 }

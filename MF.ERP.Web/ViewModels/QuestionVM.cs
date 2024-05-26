@@ -5,7 +5,7 @@ namespace MF.ERP.Web
     public class QuestionVM : BaseClassWithNameArEnVM
     {
         public int? IndustryId { get; set; }
-        public string IndustryName { get; set; }
+        public string IndustryName { get; set; } = string.Empty;
         public int cUser{ get; set; }
         public List<SelectListItem>? IndustryIdList { get; set; }
 

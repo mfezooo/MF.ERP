@@ -3,10 +3,18 @@
   "home": "الرئيسيه",
   "NameAr": "الاسم عربي",
   "NameEn": "الاسم انجليزي",
+  "Id": "كود",
   "CustomerTypes": "انواع العملاء",
   "Questions": "اسئله المقابلات",
   "ActionTypes": "انواع الاجراءات",
-  "RepresintiveTarget": "تارجيت المندوب"
+  "RepresintiveTarget": "تارجيت المندوب",
+  "Create": "انشاء",
+  "Save": "حفظ",
+  "Actions": "اجراءات",
+  "Cancel": "الغاء",
+  "CreateTitle": "انشاء جديد",
+  "EditTitle": "تعديل",
+  "CustomerStatus": "حالات العملاء"
 
 
 }

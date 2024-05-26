@@ -7,7 +7,8 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-justify" id="exampleModalLongTitle"> </h5>
+                <h5 class="modal-title text-justify" id="ModalTitleCreate"> @localizer["CreateTitle"]</h5>
+                <h5 class="modal-title text-justify" id="ModalTitleEdit">   @localizer["EditTitle"]</h5>
                
             </div>
             <div class="modal-body">
@@ -18,7 +19,7 @@
                             <div class="col"> 
                                 <label class="control-label"> @localizer["NameAr"]</label>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" id="nameInput" aria-describedby="emailHelp" name="NameAr" placeholder="Enter NameAr" required>
+                                    <input type="text" class="form-control" id="nameInput" aria-describedby="nameInput" name="NameAr" onfocusout="copyNameVal()" required>
                                     <span class="text-danger"></span>
                                 </div>
                             </div>
@@ -27,7 +28,7 @@
                             <div class="col"> 
                                 <label class="control-label"> @localizer["NameEn"]</label>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" id="nameEnInput" aria-describedby="emailHelp" name="NameEn" placeholder="Enter NameEn" required>
+                                    <input type="text" class="form-control" id="nameEnInput" aria-describedby="nameEnInput" name="NameEn" required>
                                     <span class="text-danger"></span>
                                 </div>
                             </div>
@@ -35,10 +36,10 @@
                      
                         <div class="row">
                             <div class="col">
-                                <label class="control-label">Actions</label>
+                                <label class="control-label"> </label>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary form-control">
-                                        <i class="fa fa-money"></i>Create
+                                        <i class="fa fa-money"></i> @localizer["Save"]
                                     </button>
                                     <span class="text-danger"></span>
                                 </div>
@@ -48,8 +49,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="btnSecondary" data-dismiss="modal" onclick="hideModel()"> </button>
-                @*<button type="button" class="btn btn-primary btnConfirm" id="btnPrimary"> </button>*@
+                <button type="button" class="btn btn-secondary" id="btnSecondary" data-dismiss="modal" onclick="hideModel()">@localizer["Cancel"]</button>
             </div>
         </div>
     </div>
@@ -59,11 +59,12 @@
  
 
 <div class="border p-3 mt-4" style="width:100%; overflow-x:scroll;">
-    <div class="row pt-4   ">
-        <div class="col-10">
-            <h2 class=" "> @localizer["CustomerTypes"] </h2> 
-            <button class="btn btn-primary btnAction ">  <i class="fa fa-plus"></i> Create</button>
-
+    <div class="row pt-4">
+        <div class="col-10 d-flex justify-content-start align-items-center">
+            <h2>@localizer["CustomerTypes"]</h2>
+        </div>
+        <div class="col-2 d-flex justify-content-end align-items-center">
+            <button class="btn btn-primary btnCreate"><i class="fa fa-plus"></i> @localizer["Create"]</button>
         </div>
     </div>
     <br />
@@ -71,14 +72,17 @@
     <table id="tblData" class="table table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>
-                    Id
+                <th>                    
+                    @localizer["Id"]
                 </th>
                 <th>
-                    NameAr
+                    @localizer["NameAr"]                    
                 </th>
                 <th>
-                    NameEn
+                    @localizer["NameEn"] 
+                </th>
+                <th>
+                    @localizer["Actions"]                    
                 </th>
             </tr>
 

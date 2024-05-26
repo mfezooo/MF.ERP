@@ -3,9 +3,17 @@
   "home": "Home",
   "NameAr": "Name Ar",
   "NameEn": "Name En",
+  "Id": "Id",
   "CustomerTypes": "Customer Types",
+  "CustomerStatus": "Customer Status",
   "Questions": "Questions",
   "ActionTypes": "Action Types",
-  "RepresintiveTarget": "Represintive Target"
+  "RepresintiveTarget": "Represintive Target",
+  "Create": "Create",
+  "Save": "Save",
+  "Actions": "Actions",
+  "Cancel": "Cancel",
+  "CreateTitle": "Create New",
+  "EditTitle": "Edit"
 
 }

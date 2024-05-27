@@ -37,6 +37,10 @@
   "Represintive": "المندوب",
   "StartTargetTime": "بدايه",
   "EndTargetTime": "نهايه",
-  "Target.Amount": "القيمه"
+  "Target.Amount": "القيمه",
+  "Email": "ايميل",
+  "IsLocked": "موقوف",
+  "LockDate": "تاريخ الايقاف",
+  "Representives": "المناديب"
 
 }

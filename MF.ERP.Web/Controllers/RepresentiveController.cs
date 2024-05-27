@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MF.ERP.Web.Controllers
 {
-    public class CustomerTypeController : Controller
+    public class RepresentiveController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CustomerTypeController(IUnitOfWork unitOfWork, IMapper mapper)
+        public RepresentiveController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -21,22 +21,23 @@ namespace MF.ERP.Web.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(CustomerTypeVM entity)
+        public IActionResult Create(RepresentiveVM entity)
         {
             if (entity.Id == 0)
                 ModelState.Remove("id");
-            
+          
+
             if (ModelState.IsValid)
             {
-                var mapedEntity = _mapper.Map<CustomerType>(entity);
+                var mapedEntity = _mapper.Map<Representive>(entity);
                 if (entity.Id != 0)
-                    _unitOfWork.CustomerTypeRepository.Update(mapedEntity);
+                    _unitOfWork.RepresentiveRepository.Update(mapedEntity);
                 else
-                    _unitOfWork.CustomerTypeRepository.Add(mapedEntity);
+                    _unitOfWork.RepresentiveRepository.Add(mapedEntity);
 
                 int savedCount = _unitOfWork.Save();
                 if (savedCount > 0)
-                    return Json(new { isSuccess = true, message = "Created Successfuly"  });
+                    return Json(new { isSuccess = true, message = "Created Successfuly" });
                 return Json(new { isSuccess = true, message = "Error in saving" });
 
             }
@@ -45,23 +46,23 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var enties = await _unitOfWork.CustomerTypeRepository.GetAllAsync();
+            var enties = await _unitOfWork.RepresentiveRepository.GetAllAsync();
             return Json(enties);
         }
         [HttpGet]
         public async Task<IActionResult> GetById(int id)
         {
-            var enties = await _unitOfWork.CustomerTypeRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            var enties = await _unitOfWork.RepresentiveRepository.GetFirstOrDefaultAsync(x => x.Id == id);
             return Json(enties);
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var enties = await _unitOfWork.CustomerTypeRepository.GetFirstOrDefaultAsync(x => x.Id == id);
-               _unitOfWork.CustomerTypeRepository.Remove(enties!);
+            var enties = await _unitOfWork.RepresentiveRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            _unitOfWork.RepresentiveRepository.Remove(enties!);
             int savedCount = _unitOfWork.Save();
             if (savedCount > 0)
-                return Json(new { isSuccess = true, message = "Deleted Successfuly"  });
+                return Json(new { isSuccess = true, message = "Deleted Successfuly" });
             return Json(new { isSuccess = true, message = "Error in saving" });
         }
     }

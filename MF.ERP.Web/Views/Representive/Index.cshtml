@@ -1,40 +1,96 @@
-﻿@model RepresentiveVM;
-@{
+﻿@{
     ViewData["Title"] = "Manage Representive";
 }
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-justify" id="ModalTitleCreate"> @localizer["CreateTitle"]</h5>
+                <h5 class="modal-title text-justify" id="ModalTitleEdit">   @localizer["EditTitle"]</h5>
 
-<form method="post" id="frmCreate" class="p-3">
-    <div class="form-group">
-        <label for="nameArInput">NameAr</label>
-        <input type="text" class="form-control" id="nameInput" aria-describedby="emailHelp" name="NameAr" placeholder="Enter NameAr" required>
-        <small id="emailHelp" class="form-text text-muted">Please input value.  </small>
+            </div>
+            <div class="modal-body">
+                <div id="results" typeof="submit" style="overflow:hidden; ">
+                    <form method="post" id="frmCreate" class="text-justify">
+                        <input type="number" id="sId" name="Id" hidden />
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label"> @localizer["NameAr"]</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="nameInput" aria-describedby="nameInput" name="NameAr" onfocusout="copyNameVal()" required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label"> @localizer["NameEn"]</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="nameEnInput" aria-describedby="nameEnInput" name="NameEn" required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label"> @localizer["Email"]</label>
+                                <div class="col-md-12">
+                                    <input type="email" class="form-control" id="emailInput" aria-describedby="EmailInput" name="Email"  >
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label"> @localizer["IsLocked"]</label>
+                                <div class="col-md-12">
+                                    <input type="checkbox" class="form-check-input" id="isLockedInput" aria-describedby="IsLockedInput" name="IsLocked" value="false" placeholder="" onchange="this.value = this.checked ? true : false;">
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label"> @localizer["LockDate"]</label>
+                                <div class="col-md-12">
+                                    <input type="date" class="form-control" id="LockDateInput" aria-describedby="LockDateInput" name="LockDate" readonly>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label"> </label>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary form-control">
+                                        <i class="fa fa-money"></i> @localizer["Save"]
+                                    </button>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnSecondary" data-dismiss="modal" onclick="hideModel()">@localizer["Cancel"]</button>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="nameEnInput">NameEn</label>
-        <input type="text" class="form-control" id="nameEnInput" aria-describedby="emailHelp" name="NameEn" placeholder="Enter NameEn" required>
-        <small id="emailHelp" class="form-text text-muted">Please input value.  </small>
-    </div>
-    <div class="form-group">
-        <label for="emailInput">Email</label>
-        <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" name="Email" placeholder="Enter Email" required>
-        <small id="emailHelp" class="form-text text-muted">Please input value.  </small>
-    </div>
-    <div class="form-group">
-        <label for="isLockedInput">Locked ?</label> 
-        <input type="checkbox" class="form-check" id="isLockedInput" aria-describedby="IsLocked" name="IsLocked" value="false" placeholder="" onchange="this.value = this.checked ? true : false;">
+</div>
 
-        <small id="IsLockeds" class="form-text text-muted">  </small>
-    </div>
-    <input type="text" class="form-control" aria-describedby="emailHelp" name="UserCreated" value="@Model.UserCreated" hidden>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
+@* End Modal*@
 
 
 <div class="border p-3 mt-4" style="width:100%; overflow-x:scroll;">
     <div class="row pt-4">
-        <div class="col-6">
-            <h2 class=" ">Representive</h2>
+        <div class="col-10 d-flex justify-content-start align-items-center">
+            <h2>@localizer["Representives"]</h2>
+        </div>
+        <div class="col-2 d-flex justify-content-end align-items-center">
+            <button class="btn btn-primary btnCreate"><i class="fa fa-plus"></i> @localizer["Create"]</button>
         </div>
     </div>
     <br />
@@ -43,13 +99,16 @@
         <thead>
             <tr>
                 <th>
-                    Id
+                    @localizer["Id"]
                 </th>
                 <th>
-                    NameAr
+                    @localizer["NameAr"]
                 </th>
                 <th>
-                    NameEn
+                    @localizer["NameEn"]
+                </th>
+                <th>
+                    @localizer["Actions"]
                 </th>
             </tr>
 

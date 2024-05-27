@@ -37,5 +37,9 @@
   "Represintive": "Represintive",
   "StartTargetTime": "StartTargetTime",
   "EndTargetTime": "EndTargetTime",
-  "Target.Amount": "Amount"
+  "Target.Amount": "Amount",
+  "Email": "Email",
+  "IsLocked": "Is Locked",
+  "LockDate": "Lock Date",
+  "Representives": "Representive"
 }

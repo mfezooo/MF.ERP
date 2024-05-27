@@ -41,5 +41,16 @@
   "Email": "Email",
   "IsLocked": "Is Locked",
   "LockDate": "Lock Date",
-  "Representives": "Representive"
+  "Representives": "Representive",
+  "Name": "Name",
+  "User": "User",
+  "Password": "Password",
+  "Register": "Register",
+  "Account": "Account",
+  "Login": "Login",
+  "Logout": "Logout",
+  "provider": "provider",
+  "Provider": "Provider", 
+  "DisplayName": "DisplayName",
+  "Confirm password": "Confirm password"
 }

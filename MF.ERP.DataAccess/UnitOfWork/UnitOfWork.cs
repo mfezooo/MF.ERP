@@ -17,6 +17,7 @@ namespace MF.ERP.DataAccess
             CustomerRepository = new CustomerRepository(_db);
             CustomerTypeRepository = new CustomerTypeRepository(_db);
             ActionsRepository = new ActionsRepository(_db);
+            ActionDetailsRepository = new ActionDetailsRepository(_db);          
             ActionStatusRepository = new ActionStatusRepository(_db);
             ActionTypeRepository = new ActionTypeRepository(_db);
             AreaRepository = new AreaRepository(_db);
@@ -74,7 +75,8 @@ namespace MF.ERP.DataAccess
         public IStatusRepository StatusRepository { get; set; }
         public ITargetTypeRepository TargetTypeRepository { get; set; } 
         public ITitleRepository TitleRepository { get; set; }
-         
+
+        public IActionDetailsRepository ActionDetailsRepository { get; set; }
 
         public IEnumerable<TB> ExecuteStored<TB>(string sql) where TB : class
         {

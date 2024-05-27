@@ -6,6 +6,7 @@
         ICustomerRepository CustomerRepository { get; }
         ICustomerTypeRepository CustomerTypeRepository { get; }
         IActionsRepository ActionsRepository { get; }
+        IActionDetailsRepository ActionDetailsRepository { get; }
         IActionStatusRepository ActionStatusRepository { get; }
         IActionTypeRepository ActionTypeRepository { get; }
         IAreaRepository AreaRepository { get; }

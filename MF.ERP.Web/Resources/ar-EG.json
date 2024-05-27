@@ -41,6 +41,16 @@
   "Email": "ايميل",
   "IsLocked": "موقوف",
   "LockDate": "تاريخ الايقاف",
-  "Representives": "المناديب"
-
+  "Representives": "المناديب",
+  "Name": "Name",
+  "User": "User",
+  "Password": "Password",
+  "Register": "Register",
+  "Account": "Account",
+  "Login": "Login",
+  "Logout": "Logout",
+  "provider": "provider",
+  "Provider": "Provider",
+  "DisplayName": "DisplayName",
+  "Confirm password": "Confirm password"
 }

@@ -62,7 +62,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ActionStatus");
+                    b.ToTable("ActionStatus", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.ActionType", b =>
@@ -111,7 +111,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ActionTypes");
+                    b.ToTable("ActionTypes", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Area", b =>
@@ -159,7 +159,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasIndex("GovernmentId");
 
-                    b.ToTable("Areas");
+                    b.ToTable("Areas", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Consume", b =>
@@ -206,7 +206,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Consumes");
+                    b.ToTable("Consumes", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.ContactPerson", b =>
@@ -279,7 +279,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasIndex("TitleId");
 
-                    b.ToTable("ContactPersons");
+                    b.ToTable("ContactPersons", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Customer", b =>
@@ -388,7 +388,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasIndex("RepresentiveId");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.CustomerGroup", b =>
@@ -431,7 +431,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CustomerGroups");
+                    b.ToTable("CustomerGroups", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.CustomerStatus", b =>
@@ -474,7 +474,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CustomerStatus");
+                    b.ToTable("CustomerStatus", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.CustomerType", b =>
@@ -567,7 +567,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Governmens");
+                    b.ToTable("Governmens", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Industry", b =>
@@ -610,7 +610,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Industries");
+                    b.ToTable("Industries", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Job", b =>
@@ -653,7 +653,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Jobs");
+                    b.ToTable("Jobs", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Order", b =>
@@ -736,7 +736,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ordes");
+                    b.ToTable("Ordes", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.OrderDetail", b =>
@@ -802,7 +802,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderDetais");
+                    b.ToTable("OrderDetais", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.PaymentMethoud", b =>
@@ -845,7 +845,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentMethous");
+                    b.ToTable("PaymentMethous", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.PaymentPlan", b =>
@@ -889,7 +889,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentPlas");
+                    b.ToTable("PaymentPlas", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.PaymentPlanDetails", b =>
@@ -946,7 +946,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentPlanDetails");
+                    b.ToTable("PaymentPlanDetails", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.PineLineAction", b =>
@@ -1002,7 +1002,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasIndex("PipeLineId");
 
-                    b.ToTable("PineLineActions");
+                    b.ToTable("PineLineActions", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.PipeLine", b =>
@@ -1055,7 +1055,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PipeLins");
+                    b.ToTable("PipeLins", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.PipeLineStatus", b =>
@@ -1110,7 +1110,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PipeLineStatus");
+                    b.ToTable("PipeLineStatus", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Product", b =>
@@ -1176,7 +1176,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Question", b =>
@@ -1224,7 +1224,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasIndex("IndustryId");
 
-                    b.ToTable("Questions");
+                    b.ToTable("Questions", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Representive", b =>
@@ -1276,7 +1276,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Representivs");
+                    b.ToTable("Representivs", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.RepresintiveTarget", b =>
@@ -1333,7 +1333,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasIndex("TargetTypeId");
 
-                    b.ToTable("RepresintiveTarges");
+                    b.ToTable("RepresintiveTarges", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Status", b =>
@@ -1376,7 +1376,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Status");
+                    b.ToTable("Status", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.TargetType", b =>
@@ -1419,7 +1419,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TargetTypes");
+                    b.ToTable("TargetTypes", (string)null);
                 });
 
             modelBuilder.Entity("MF.ERP.Models.Title", b =>
@@ -1462,7 +1462,7 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Titles");
+                    b.ToTable("Titles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

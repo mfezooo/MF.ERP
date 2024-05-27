@@ -43,6 +43,8 @@ namespace MF.ERP.DataAccess
         public virtual DbSet<Status> Status { set; get; }
         public virtual DbSet<TargetType> TargetTypes { set; get; }  
         public virtual DbSet<Title> Titles { set; get; }
+        public virtual DbSet<ActionsMaster> ActionsMaster { set; get; }
+        public virtual DbSet<ActionsDetails> ActionsDetails { set; get; }
 
 
 
@@ -56,6 +58,35 @@ namespace MF.ERP.DataAccess
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.NameAr).IsUnicode().HasMaxLength(200).IsRequired();
                 entity.Property(e => e.NameEn).IsUnicode(false).HasMaxLength(200).IsRequired();
+
+            });
+
+            modelBuilder.Entity<ActionsDetails>(entity =>
+            {
+                entity.ToTable("ActionsDetails");
+                entity.HasKey(e => e.Id);
+                entity.HasOne(e => e.ActionsMaster)
+                 .WithMany(e => e!.Details)
+                 .HasForeignKey(e => e.ActionsMasterId)
+                 .IsRequired()
+                 .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Customer)
+ .WithMany(e => e!.ActionsDetails)
+ .HasForeignKey(e => e.CustomerId)
+ .IsRequired()
+ .OnDelete(DeleteBehavior.Restrict);
+
+            });
+            modelBuilder.Entity<ActionsMaster>(entity =>
+            {
+                entity.ToTable("ActionsMaster");
+                entity.HasKey(e => e.Id);
+                entity.HasOne(e => e.Representive)
+.WithMany(e => e!.ActionsMaster)
+.HasForeignKey(e => e.RepresentiveId)
+.IsRequired()
+.OnDelete(DeleteBehavior.Restrict);
 
             });
             //modelBuilder.Entity<Customer>(entity =>

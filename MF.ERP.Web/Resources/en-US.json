@@ -50,7 +50,8 @@
   "Login": "Login",
   "Logout": "Logout",
   "provider": "provider",
-  "Provider": "Provider", 
+  "Provider": "Provider",
   "DisplayName": "DisplayName",
-  "Confirm password": "Confirm password"
+  "Confirm password": "Confirm password",
+  "Remember me?": "Remember me?"
 }

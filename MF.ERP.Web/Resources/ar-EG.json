@@ -44,13 +44,14 @@
   "Representives": "المناديب",
   "Name": "Name",
   "User": "User",
-  "Password": "Password",
-  "Register": "Register",
-  "Account": "Account",
-  "Login": "Login",
-  "Logout": "Logout",
+  "Password": "كلمة المرور",
+  "Register": "تسجيل",
+  "Account": "حساب",
+  "Login": "دخول",
+  "Logout": "خروج",
   "provider": "provider",
   "Provider": "Provider",
   "DisplayName": "DisplayName",
-  "Confirm password": "Confirm password"
+  "Confirm password": "تأكيد كلمه المرور",
+  "Remember me?": "تذكرني؟"
 }

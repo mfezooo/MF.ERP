@@ -81,7 +81,7 @@ $("#frmCreate").submit(function (e) {
 
 
             Id: $(this).find("td:eq(0)").text(),
-            ActionsMasterId : 
+            ActionsMasterId : 0,
             ProductId: $(this).find("td:eq(0)").text(),
             InvoiceMasterId: 0,
             Price: parseFloat($(this).find("td:eq(3)").text()),

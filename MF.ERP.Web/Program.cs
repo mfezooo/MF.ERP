@@ -42,7 +42,11 @@ builder.Services.Configure<RequestLocalizationOptions>(option =>
 // Add services to the container.
 //builder.Services.AddControllersWithViews();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = new PathString("/Identity/Account/Login");
+    options.LogoutPath = new PathString("/Identity/Account/Login");
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

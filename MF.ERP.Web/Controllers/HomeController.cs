@@ -1,5 +1,6 @@
 using MF.ERP.DataAccess;
 using MF.ERP.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -7,6 +8,7 @@ using System.Diagnostics;
 
 namespace MF.ERP.Web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -26,6 +28,9 @@ namespace MF.ERP.Web.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }  public IActionResult Login()
         {
             return View();
         }

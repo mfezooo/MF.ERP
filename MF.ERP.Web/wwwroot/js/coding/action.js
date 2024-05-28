@@ -51,7 +51,7 @@ function loadDataTable() {
         "columns": [
             { "data": "id", "width": "10%" },
             { "data": "representiveName", "width": "25%" },
-            { "data": "actionDate", "width": "25%" },
+            { "data": "startDate", "width": "25%" },
             { "data": "notes", "width": "40%" },
             {
                 title: "", "width": "10%",
@@ -66,49 +66,62 @@ function loadDataTable() {
         "bDestroy": true
     });
 }
-// this is the id of the form
 $("#frmCreate").submit(function (e) {
-
-    e.preventDefault(); // avoid to execute the actual submit of the form.
+    e.preventDefault(); // Prevent the actual form submission
 
     var form = $(this);
-    let actionUrls = controllerName+"/Create";
-    //var actionUrl = form.attr('action');
+    var actionUrls = controllerName + "/Create"; // Replace with your controller action URL
     var list = [];
+
+    // Collect details from the table
     $('#ExpTable').find("tr:gt(0)").each(function () {
-
         var result = {
-
-
             Id: $(this).find("td:eq(0)").text(),
-            ActionsMasterId : 0,
-            ProductId: $(this).find("td:eq(0)").text(),
-            InvoiceMasterId: 0,
-            Price: parseFloat($(this).find("td:eq(3)").text()),
+            ProductId: $(this).find("td:eq(1)").text(),
             Qty: parseFloat($(this).find("td:eq(2)").text()),
+            Price: parseFloat($(this).find("td:eq(3)").text()),
             Total: parseFloat($(this).find("td:eq(4)").text())
-
         };
         list.push(result);
-
     });
-    form.append("Details", list);
+
+    // Create a FormData object
+    var formData = new FormData();
+
+    // Append master fields to the FormData object
+    form.serializeArray().forEach(function (field) {
+        formData.append(field.name, field.value);
+    });
+
+    // Append each item in the details list to the FormData object
+    list.forEach(function (item, index) {
+        formData.append(`Details[${index}].Id`, item.Id);
+        formData.append(`Details[${index}].ProductId`, item.ProductId);
+        formData.append(`Details[${index}].Qty`, item.Qty);
+        formData.append(`Details[${index}].Price`, item.Price);
+        formData.append(`Details[${index}].Total`, item.Total);
+    });
+
+    // Perform the AJAX request
     $.ajax({
         type: "POST",
         url: actionUrls,
-        data: form.serialize(), // serializes the form's elements.
+        data: formData, // Use FormData object for the data
+        processData: false, // Tell jQuery not to process the data
+        contentType: false, // Tell jQuery not to set contentType
         success: function (data) {
             if (data.isSuccess) {
-                showSuccessMessage();
-                loadDataTable();
+                showSuccessMessage(); // Your success message function
+                loadDataTable(); // Function to reload your data table
             } else {
-                showErrorMessage();
+                showErrorMessage(); // Your error message function
             }
+        },
+        error: function (xhr, status, error) {
+            console.error(error); // Log any errors
         }
     });
-
 });
-
 function drawModel(mTitle, mData, callBack = null) {
 
     if (mTitle === 'CreateNew') {
@@ -135,7 +148,7 @@ function hideModel() {
 
 
 function AddItem(btn) {
-    debugger;
+    //debugger;
     if ($('#customerId').val() == 0 || $('#customerId').val() == "") {
        
       

@@ -25,7 +25,7 @@ namespace MF.ERP.Web
         public int? PurchasingOrderId { get; set; }
         public int? OrderId { get; set; }
 
-        public virtual ICollection<ActionsDetails>? Details { get; set; }
+        public  List<ActionsDetails>? Details { get; set; }
         public List<SelectListItem>? RepresentiveList { get; set; }
         public List<SelectListItem>? CustomerList { get; set; }
         public List<SelectListItem>? ActionStatusList { get; set; }
@@ -35,7 +35,9 @@ namespace MF.ERP.Web
     }
     public class ActionsDetailsVM : BaseClassVM
     {
-        public int ActionsMasterId { get; set; }
+        public int Id { get; set; } = 0;
+        public int UserCreated { get; set; } = 0;
+        public int ActionsMasterId { get; set; } = 0;
         public DateTime? PlanedDate { get; set; }
         public DateTime? ActualDate { get; set; } = DateTime.Now;
         public int? ActionId { get; set; }

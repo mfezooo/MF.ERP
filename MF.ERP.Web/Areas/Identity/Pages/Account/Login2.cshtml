@@ -1,0 +1,102 @@
+﻿@page
+@model LoginModel2
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@{
+    ViewData["Title"] = "Log in";
+    Layout = null;
+    var isRTL = System.Globalization.CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
+<!DOCTYPE html>
+<html dir="@(isRTL? "RTL":"LTR")" lang="@(isRTL? "ar":"en")">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>CRM System</title>
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="~/css/dt/datatables.datatables.min.css" rel="stylesheet" />
+    <link href="~/css/tabs.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Added By Me-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+     
+
+    <!-- Added By Me End--> 
+
+    <style>
+        .centered-container {
+            height: 100vh;
+        }
+
+        .login-image {
+            width: 250px;
+            height: 250px;
+            display: block;
+            margin: 0 auto 20px; /* Center the image and add some margin at the bottom */
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex align-items-center justify-content-center centered-container">
+
+        <div class="row col-md-3 col-sm-12 mx-auto">
+            <div class="text-center">
+                <img class="login-image" src="~/imgs/magdlogo.png" />
+            </div>
+            <div class="">
+                <h1>@ViewData["Title"]</h1>
+                <section>
+                    <form id="account" method="post">
+                        <h2>Use your account to log in.</h2>
+                        <hr />
+                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                            <label asp-for="Input.Email" class="form-label">Email</label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                            <label asp-for="Input.Password" class="form-label">Password</label>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label asp-for="Input.RememberMe" class="form-label">
+                                <input class="form-check-input" asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+                        <div>
+                            <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                        </div>
+                        <div>
+                            <p>
+                                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                            </p>
+                               <p>
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                            </p>
+                            @*    <p>
+                            <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                            </p> *@
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

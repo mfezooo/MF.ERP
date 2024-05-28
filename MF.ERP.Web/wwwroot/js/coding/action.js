@@ -50,7 +50,7 @@ function loadDataTable() {
         "order": [[0, 'desc']],
         "columns": [
             { "data": "id", "width": "10%" },
-            { "data": "representive.nameAr", "width": "25%" },
+            { "data": "representiveName", "width": "25%" },
             { "data": "actionDate", "width": "25%" },
             { "data": "notes", "width": "40%" },
             {
@@ -92,6 +92,7 @@ $("#frmCreate").submit(function (e) {
         list.push(result);
 
     });
+    form.append("Details", list);
     $.ajax({
         type: "POST",
         url: actionUrls,

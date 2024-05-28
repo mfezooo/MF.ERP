@@ -15,82 +15,97 @@
                     <form method="post" id="frmCreate" class="p-3">
                         <input hidden asp-for="@Model.Id" id="id" , name="Id" />
                         <div class="row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label class="control-label"> @localizer["Representive"]</label>
                                 <div class="col-md-12">
-                                    <select name="GovernmentId" class="form-control" asp-items="@(new SelectList(@Model.RepresentiveList, "Value", "Text"))" required></select>
-                                    <small id='GovernmentId' class='form-text text-muted'>  </small>
+                                    <select name="RepresentiveId" class="form-control" asp-items="@(new SelectList(@Model.RepresentiveList, "Value", "Text"))" required></select>
+                                    <small id='RepresentiveId' class='form-text text-muted'>  </small>
                                 </div>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
+                                <label class="control-label"> @localizer["Customer"]</label>
+                                <div class="col-md-12">
+                                    <select name="customerId" id="customerId" class="form-control" asp-items="@(new SelectList(Model.CustomerList, "Value", "Text"))" required></select>
+                                    <small id='customerId' class='form-text text-muted'>  </small>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="control-label"> @localizer["ActionStatus"]</label>
+                                <div class="col-md-12">
+                                    <select name="ActionStatusId" id="ActionStatusId" class="form-control" asp-items="@(new SelectList(Model.ActionStatusList, "Value", "Text"))" required></select>
+                                    <small id='ActionStatusId' class='form-text text-muted'>  </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
                                 <label for="nameEnInput">  @localizer["ActionDate"]</label>
                                 <div class="col-md-12">
-                                    <input type="date" class="form-control" id="actionDate" aria-describedby="ActionDate" name="ActionDate" asp-for="@Model.ActionDate" required>
+                                    <input type="date" class="form-control" id="actionDate" aria-describedby="ActionDate" name="ActionDate" asp-for="@Model.StartDate" required>
                                     <span class="text-danger"></span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="nameEnInput">  @localizer["Notes"]</label>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" id="notes" aria-describedby="Notes" name="Notes" asp-for="@Model.Notes" required>
-                                <span class="text-danger"></span>
+
+                            <div class="form-group col-md-4">
+                                <label for="nameEnInput">  @localizer["ExpectedEndDate"]</label>
+                                <div class="col-md-12">
+                                    <input type="date" class="form-control" id="expectedEndDate" aria-describedby="ExpectedEndDate" name="ExpectedEndDate" asp-for="@Model.ExpectedEndDate" required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="nameEnInput">  @localizer["Notes"]</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="notes" aria-describedby="Notes" name="Notes" asp-for="@Model.Notes" required>
+                                    <span class="text-danger"></span>
+                                </div>
                             </div>
 
                         </div>
 
-                        <input type="text" class="form-control" aria-describedby="emailHelp" name="UserCreated" value="@ViewBag.cUser" hidden>
+                        <input type="text" class="form-control" aria-describedby="emailHelp" name="UserCreated" value="@Model.UserCreated" hidden>
 
 
                         @* details *@
                         <br />
                         <hr />
                         <div class="row">
-
-                            <div class="form-group col-md-3">
-                                <label class="control-label"> @localizer["Customer"]</label>
-                                <select name="customerId" id="customerId" class="form-control" asp-items="@(new SelectList(ViewBag.Customer, "Value", "Text"))" required></select>
-                                <small id='CustomerId' class='form-text text-muted'>  </small>
-                            </div>
-
                             <div class="form-group col-md-3">
                                 <label class="control-label"> @localizer["ActionType"]</label>
-                                <select name="actionId" id="actionId" class="form-control" asp-items="@(new SelectList(ViewBag.ActionType, "Value", "Text"))" required></select>
+                                <select name="actionId" id="actionId" class="form-control" asp-items="@(new SelectList(Model.ActionTypeList, "Value", "Text"))" required></select>
                                 <small id='ActionId' class='form-text text-muted'>  </small>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="nameEnInput">  @localizer["ActionDate"]</label>
                                 <div class="col-md-12">
-                                    <input type="date" class="form-control" id="actionDateDetails" aria-describedby="ActionDateDetails" name="ActionDateDetails" asp-for="@Model.ActionDateDetails" required>
+                                    <input type="date" class="form-control" id="actionDateDetails" aria-describedby="ActionDateDetails" name="ActionDateDetails" value="@DateTime.Now.Date" required>
                                     <span class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="form-group col-md-3">
-                                <label class="control-label"> @localizer["NextActionType"]</label>
-                                <select name="nextActionId" id="nextActionId" class="form-control" asp-items="@(new SelectList(ViewBag.ActionType, "Value", "Text"))" required></select>
-                                <small id='nextActionId' class='form-text text-muted'>  </small>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="nameEnInput">  @localizer["NextActionDate"]</label>
-                                <div class="col-md-12">
-                                    <input type="date" class="form-control" id="nextActionDate" aria-describedby="NextActionDate" name="NextActionDate" asp-for="@Model.NextActionDate" required>
-                                    <span class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-7">
+                            <div class="form-group col-md-6">
                                 <label for="nameEnInput">  @localizer["Result"]</label>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" id="result" aria-describedby="Result" name="Result"  required>
+                                    <input type="text" class="form-control" id="result" aria-describedby="Result" name="Result" required>
                                     <span class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                               <br />
-                                <button id="btnadd" type="button" class="btn btn-sm btn-secondary visible" onclick="AddItem(this)">Add</button>
+                            <div class="form-group col-md-4">
+                                <label class="control-label"> @localizer["NextActionType"]</label>
+                                <select name="nextActionId" id="nextActionId" class="form-control" asp-items="@(new SelectList(Model.ActionTypeList, "Value", "Text"))" required></select>
+                                <small id='nextActionId' class='form-text text-muted'>  </small>
                             </div>
-
-
-
+                            <div class="form-group col-md-4">
+                                <label for="nameEnInput">  @localizer["NextActionDate"]</label>
+                                <div class="col-md-12">
+                                    <input type="date" class="form-control" id="nextActionDate" aria-describedby="NextActionDate" name="NextActionDate" value="@DateTime.Now.Date" required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                         
+                            <div class="col-md-4">
+                                <br />
+                                <button id="btnadd" type="button" class="btn  btn-secondary visible" onclick="AddItem(this)">Add</button>
+                            </div>
                         </div>
                         <div class="col-md-12 ">
                             <div class="table-responsive-lg">

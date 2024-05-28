@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Manage Order Status";
+}
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-justify" id="ModalTitleCreate"> @localizer["CreateTitle"]</h5>
+                <h5 class="modal-title text-justify" id="ModalTitleEdit">   @localizer["EditTitle"]</h5>
+
+            </div>
+            <div class="modal-body">
+                <div id="results" typeof="submit" style="overflow:hidden; ">
+                    <form method="post" id="frmCreate" class="text-justify">
+                        <input type="number" id="sId" name="Id" hidden />
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label"> @localizer["NameAr"]</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="nameInput" aria-describedby="nameInput" name="NameAr" onfocusout="copyNameVal()" required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label"> @localizer["NameEn"]</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="nameEnInput" aria-describedby="nameEnInput" name="NameEn" required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label"> </label>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary form-control">
+                                        <i class="fa fa-money"></i> @localizer["Save"]
+                                    </button>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnSecondary" data-dismiss="modal" onclick="hideModel()">@localizer["Cancel"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* End Modal*@
+
+
+<div class="border p-3 mt-4" style="width:100%; overflow-x:scroll;">
+    <div class="row pt-4">
+        <div class="col-10 d-flex justify-content-start align-items-center">
+            <h2>@localizer["OrderStatus"]</h2>
+        </div>
+        <div class="col-2 d-flex justify-content-end align-items-center">
+            <button class="btn btn-primary btnCreate"><i class="fa fa-plus"></i> @localizer["Create"]</button>
+        </div>
+    </div>
+    <br />
+
+    <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    @localizer["Id"]
+                </th>
+                <th>
+                    @localizer["NameAr"]
+                </th>
+                <th>
+                    @localizer["NameEn"]
+                </th>
+                <th>
+                    @localizer["Actions"]
+                </th>
+            </tr>
+
+        </thead>
+    </table>
+</div>
+@section Scripts {
+    <script src="~/js/coding/orderStatus.js"></script>
+}

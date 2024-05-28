@@ -1,7 +1,7 @@
-using MF.ERP.Models; 
+using MF.ERP.Models;
 namespace MF.ERP.DataAccess
 {
-    public interface IActionStatusRepository : IRepository<ActionStatus> 
+    public interface IActionStatusRepository : IRepository<ActionStatus>
     {
-     }
+    }
 }

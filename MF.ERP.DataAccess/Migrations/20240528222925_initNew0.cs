@@ -6,11 +6,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MF.ERP.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class EditAction : Migration
+    public partial class initNew0 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "ActionDetailStatus",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserCreated = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true),
+                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifyCount = table.Column<int>(type: "int", nullable: true),
+                    OrderBy = table.Column<int>(type: "int", nullable: false),
+                    NameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameEn = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ActionDetailStatus", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "ActionStatus",
                 columns: table => new
@@ -173,7 +194,7 @@ namespace MF.ERP.DataAccess.Migrations
                     ModifyCount = table.Column<int>(type: "int", nullable: true),
                     OrderBy = table.Column<int>(type: "int", nullable: false),
                     NameAr = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    NameEn = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: false)
+                    NameEn = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -245,38 +266,24 @@ namespace MF.ERP.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Ordes",
+                name: "OrderStatus",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
-                    RepresintveId = table.Column<int>(type: "int", nullable: false),
-                    DeleveryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PaymentMethodId = table.Column<int>(type: "int", nullable: false),
-                    PaymentPlanId = table.Column<int>(type: "int", nullable: false),
-                    OfferPriceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ChangeToOrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PipeLineId = table.Column<int>(type: "int", nullable: false),
-                    CrmMgrApprovedId = table.Column<int>(type: "int", nullable: false),
-                    CrmMgrApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AccMgrApprovedId = table.Column<int>(type: "int", nullable: false),
-                    AccMgrApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    StockMgrApprovedId = table.Column<int>(type: "int", nullable: false),
-                    StocMgrApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    StatusId = table.Column<int>(type: "int", nullable: false),
                     UserCreated = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: true),
                     LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ModifyCount = table.Column<int>(type: "int", nullable: true),
-                    OrderBy = table.Column<int>(type: "int", nullable: false)
+                    OrderBy = table.Column<int>(type: "int", nullable: false),
+                    NameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameEn = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ordes", x => x.Id);
+                    table.PrimaryKey("PK_OrderStatus", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -448,27 +455,6 @@ namespace MF.ERP.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Representivs", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Status",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserCreated = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: true),
-                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ModifyCount = table.Column<int>(type: "int", nullable: true),
-                    OrderBy = table.Column<int>(type: "int", nullable: false),
-                    NameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NameEn = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Status", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -675,39 +661,6 @@ namespace MF.ERP.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderDetais",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    Spects = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PackId = table.Column<int>(type: "int", nullable: true),
-                    Pack = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SellPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    BuyPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SuggestedSellPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Quantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: true),
-                    UserCreated = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: true),
-                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ModifyCount = table.Column<int>(type: "int", nullable: true),
-                    OrderBy = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderDetais", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_OrderDetais_Ordes_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Ordes",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PineLineActions",
                 columns: table => new
                 {
@@ -739,14 +692,27 @@ namespace MF.ERP.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ActionsMaster",
+                name: "Ordes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
                     RepresentiveId = table.Column<int>(type: "int", nullable: false),
-                    ActionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleveryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PaymentMethoudId = table.Column<int>(type: "int", nullable: true),
+                    PaymentPlanId = table.Column<int>(type: "int", nullable: true),
+                    OfferPriceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ChangeToOrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PipeLineId = table.Column<int>(type: "int", nullable: true),
+                    CrmMgrApprovedId = table.Column<int>(type: "int", nullable: false),
+                    CrmMgrApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AccMgrApprovedId = table.Column<int>(type: "int", nullable: false),
+                    AccMgrApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StockMgrApprovedId = table.Column<int>(type: "int", nullable: false),
+                    StocMgrApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StatusId = table.Column<int>(type: "int", nullable: false),
                     UserCreated = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: true),
@@ -757,13 +723,34 @@ namespace MF.ERP.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ActionsMaster", x => x.Id);
+                    table.PrimaryKey("PK_Ordes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ActionsMaster_Representivs_RepresentiveId",
+                        name: "FK_Ordes_OrderStatus_StatusId",
+                        column: x => x.StatusId,
+                        principalTable: "OrderStatus",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ordes_PaymentMethous_PaymentMethoudId",
+                        column: x => x.PaymentMethoudId,
+                        principalTable: "PaymentMethous",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Ordes_PaymentPlas_PaymentPlanId",
+                        column: x => x.PaymentPlanId,
+                        principalTable: "PaymentPlas",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Ordes_PipeLins_PipeLineId",
+                        column: x => x.PipeLineId,
+                        principalTable: "PipeLins",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Ordes_Representivs_RepresentiveId",
                         column: x => x.RepresentiveId,
                         principalTable: "Representivs",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -870,29 +857,20 @@ namespace MF.ERP.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ActionsDetails",
+                name: "OrderDetais",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ActionsMasterId = table.Column<int>(type: "int", nullable: false),
-                    PlanedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ActualDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ActionId = table.Column<int>(type: "int", nullable: true),
-                    ActionDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ActionTypeId = table.Column<int>(type: "int", nullable: true),
-                    NextActionId = table.Column<int>(type: "int", nullable: true),
-                    NextActionTpeId = table.Column<int>(type: "int", nullable: true),
-                    NextActionDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
-                    ActionRefranceId = table.Column<int>(type: "int", nullable: true),
-                    OfferPriceId = table.Column<int>(type: "int", nullable: true),
-                    PurchasingOrderId = table.Column<int>(type: "int", nullable: true),
-                    StatusId = table.Column<int>(type: "int", nullable: true),
-                    isConsumeRecorded = table.Column<bool>(type: "bit", nullable: true),
-                    Result = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsApprovedByManager = table.Column<bool>(type: "bit", nullable: true),
-                    LocationWhenWithCustomer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Spects = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PackId = table.Column<int>(type: "int", nullable: true),
+                    Pack = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SellPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    BuyPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SuggestedSellPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Quantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: true),
                     UserCreated = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: true),
@@ -903,27 +881,63 @@ namespace MF.ERP.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ActionsDetails", x => x.Id);
+                    table.PrimaryKey("PK_OrderDetais", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ActionsDetails_ActionTypes_ActionTypeId",
-                        column: x => x.ActionTypeId,
-                        principalTable: "ActionTypes",
+                        name: "FK_OrderDetais_Ordes_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Ordes",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ActionsMaster",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExpectedRevenue = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExpectedEndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ActionStatusId = table.Column<int>(type: "int", nullable: false),
+                    RepresentiveId = table.Column<int>(type: "int", nullable: false),
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    ActionRefranceId = table.Column<int>(type: "int", nullable: true),
+                    OfferPriceId = table.Column<int>(type: "int", nullable: true),
+                    PurchasingOrderId = table.Column<int>(type: "int", nullable: true),
+                    OrderId = table.Column<int>(type: "int", nullable: true),
+                    UserCreated = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true),
+                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifyCount = table.Column<int>(type: "int", nullable: true),
+                    OrderBy = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ActionsMaster", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ActionsDetails_ActionTypes_NextActionTpeId",
-                        column: x => x.NextActionTpeId,
-                        principalTable: "ActionTypes",
-                        principalColumn: "Id");
+                        name: "FK_ActionsMaster_ActionStatus_ActionStatusId",
+                        column: x => x.ActionStatusId,
+                        principalTable: "ActionStatus",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ActionsDetails_ActionsMaster_ActionsMasterId",
-                        column: x => x.ActionsMasterId,
+                        name: "FK_ActionsMaster_ActionsMaster_ActionRefranceId",
+                        column: x => x.ActionRefranceId,
                         principalTable: "ActionsMaster",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ActionsMaster_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ActionsDetails_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
+                        name: "FK_ActionsMaster_Representivs_RepresentiveId",
+                        column: x => x.RepresentiveId,
+                        principalTable: "Representivs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -974,6 +988,64 @@ namespace MF.ERP.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ActionsDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ActionsMasterId = table.Column<int>(type: "int", nullable: false),
+                    PlanedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ActualDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ActionId = table.Column<int>(type: "int", nullable: true),
+                    ActionDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ActionTypeId = table.Column<int>(type: "int", nullable: true),
+                    NextActionId = table.Column<int>(type: "int", nullable: true),
+                    NextActionDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ActionDetailStatusId = table.Column<int>(type: "int", nullable: true),
+                    isConsumeRecorded = table.Column<bool>(type: "bit", nullable: true),
+                    Result = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsApprovedByManager = table.Column<bool>(type: "bit", nullable: true),
+                    LocationWhenWithCustomer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserCreated = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true),
+                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifyBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifyCount = table.Column<int>(type: "int", nullable: true),
+                    OrderBy = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ActionsDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ActionsDetails_ActionDetailStatus_ActionDetailStatusId",
+                        column: x => x.ActionDetailStatusId,
+                        principalTable: "ActionDetailStatus",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ActionsDetails_ActionTypes_ActionTypeId",
+                        column: x => x.ActionTypeId,
+                        principalTable: "ActionTypes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ActionsDetails_ActionTypes_NextActionId",
+                        column: x => x.NextActionId,
+                        principalTable: "ActionTypes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ActionsDetails_ActionsMaster_ActionsMasterId",
+                        column: x => x.ActionsMasterId,
+                        principalTable: "ActionsMaster",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ActionsDetails_ActionDetailStatusId",
+                table: "ActionsDetails",
+                column: "ActionDetailStatusId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_ActionsDetails_ActionsMasterId",
                 table: "ActionsDetails",
@@ -985,14 +1057,24 @@ namespace MF.ERP.DataAccess.Migrations
                 column: "ActionTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ActionsDetails_CustomerId",
+                name: "IX_ActionsDetails_NextActionId",
                 table: "ActionsDetails",
-                column: "CustomerId");
+                column: "NextActionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ActionsDetails_NextActionTpeId",
-                table: "ActionsDetails",
-                column: "NextActionTpeId");
+                name: "IX_ActionsMaster_ActionRefranceId",
+                table: "ActionsMaster",
+                column: "ActionRefranceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ActionsMaster_ActionStatusId",
+                table: "ActionsMaster",
+                column: "ActionStatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ActionsMaster_CustomerId",
+                table: "ActionsMaster",
+                column: "CustomerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ActionsMaster_RepresentiveId",
@@ -1089,6 +1171,31 @@ namespace MF.ERP.DataAccess.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Ordes_PaymentMethoudId",
+                table: "Ordes",
+                column: "PaymentMethoudId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ordes_PaymentPlanId",
+                table: "Ordes",
+                column: "PaymentPlanId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ordes_PipeLineId",
+                table: "Ordes",
+                column: "PipeLineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ordes_RepresentiveId",
+                table: "Ordes",
+                column: "RepresentiveId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ordes_StatusId",
+                table: "Ordes",
+                column: "StatusId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PineLineActions_PipeLineId",
                 table: "PineLineActions",
                 column: "PipeLineId");
@@ -1114,9 +1221,6 @@ namespace MF.ERP.DataAccess.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ActionsDetails");
-
-            migrationBuilder.DropTable(
-                name: "ActionStatus");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -1146,13 +1250,7 @@ namespace MF.ERP.DataAccess.Migrations
                 name: "OrderDetais");
 
             migrationBuilder.DropTable(
-                name: "PaymentMethous");
-
-            migrationBuilder.DropTable(
                 name: "PaymentPlanDetails");
-
-            migrationBuilder.DropTable(
-                name: "PaymentPlas");
 
             migrationBuilder.DropTable(
                 name: "PineLineActions");
@@ -1170,7 +1268,7 @@ namespace MF.ERP.DataAccess.Migrations
                 name: "RepresintiveTarges");
 
             migrationBuilder.DropTable(
-                name: "Status");
+                name: "ActionDetailStatus");
 
             migrationBuilder.DropTable(
                 name: "ActionTypes");
@@ -1185,9 +1283,6 @@ namespace MF.ERP.DataAccess.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Customers");
-
-            migrationBuilder.DropTable(
                 name: "Jobs");
 
             migrationBuilder.DropTable(
@@ -1197,10 +1292,25 @@ namespace MF.ERP.DataAccess.Migrations
                 name: "Ordes");
 
             migrationBuilder.DropTable(
-                name: "PipeLins");
+                name: "TargetTypes");
 
             migrationBuilder.DropTable(
-                name: "TargetTypes");
+                name: "ActionStatus");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
+
+            migrationBuilder.DropTable(
+                name: "OrderStatus");
+
+            migrationBuilder.DropTable(
+                name: "PaymentMethous");
+
+            migrationBuilder.DropTable(
+                name: "PaymentPlas");
+
+            migrationBuilder.DropTable(
+                name: "PipeLins");
 
             migrationBuilder.DropTable(
                 name: "Areas");

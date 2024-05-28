@@ -1,6 +1,6 @@
 namespace MF.ERP.Web
 {
-    public class StatusVM : BaseClassWithNameArEnVM
+    public class OrderStatusVM : BaseClassWithNameArEnVM
     {
     }
 }

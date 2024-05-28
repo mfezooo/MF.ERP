@@ -1,4 +1,4 @@
-using MF.ERP.Models; 
+using MF.ERP.Models;
 namespace MF.ERP.DataAccess
 {
     public class ActionStatusRepository : Repository<ActionStatus>, IActionStatusRepository

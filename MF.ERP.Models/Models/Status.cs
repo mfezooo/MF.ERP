@@ -1,6 +1,6 @@
 ﻿namespace MF.ERP.Models
 {
-    public class Status : BaseEntityWithNameArEn
+    public class OrderStatus : BaseEntityWithNameArEn
     { 
     }
 }

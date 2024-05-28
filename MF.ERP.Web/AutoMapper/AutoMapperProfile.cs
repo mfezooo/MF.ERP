@@ -36,6 +36,7 @@ namespace MF.ERP.Web
             TartgetTypeMapper();  
             TitleMapper();
             ActionsQuestionMapper();
+            ActionDetailStatusMapper();
         }
         private void ActionsMapper()
         {
@@ -46,6 +47,10 @@ namespace MF.ERP.Web
         private void ActionStatusMapper()
         {
             CreateMap<ActionStatusVM, ActionStatus>().ReverseMap();
+        }
+        private void ActionDetailStatusMapper()
+        {
+            CreateMap<ActionDetailStatusVM, ActionDetailStatus>().ReverseMap();
         }
 
         private void ActionTypeMapper()
@@ -165,7 +170,7 @@ namespace MF.ERP.Web
 
         private void StatusMapper()
         {
-            CreateMap<StatusVM, Status>().ReverseMap();
+            CreateMap<OrderStatusVM, OrderStatus>().ReverseMap();
         }
 
         private void TartgetTypeMapper()

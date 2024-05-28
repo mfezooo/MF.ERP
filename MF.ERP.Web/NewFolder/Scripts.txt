@@ -1,0 +1,130 @@
+﻿
+
+USE [MFERP]
+GO
+SET IDENTITY_INSERT [dbo].[Governmens] ON 
+GO
+INSERT [dbo].[Governmens] ([Id], [CountryId], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, 1, N'', CAST(N'2024-05-28T21:40:43.2113950' AS DateTime2), 0, NULL, NULL, NULL, 0, N'القاهره', N'القاهره')
+GO
+SET IDENTITY_INSERT [dbo].[Governmens] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Areas] ON 
+GO
+INSERT [dbo].[Areas] ([Id], [GovernmentId], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, 1, N'', CAST(N'2024-05-28T21:40:59.1225892' AS DateTime2), 0, NULL, NULL, NULL, 0, N'المنطقه الحره', N'المنطقه الحره')
+GO
+SET IDENTITY_INSERT [dbo].[Areas] OFF
+GO
+SET IDENTITY_INSERT [dbo].[CustomerStatus] ON 
+GO
+INSERT [dbo].[CustomerStatus] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, N'', CAST(N'2024-05-28T21:36:42.2526998' AS DateTime2), 0, NULL, NULL, NULL, 0, N'عميل متوقع', N'عميل متوقع')
+GO
+INSERT [dbo].[CustomerStatus] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (2, N'', CAST(N'2024-05-28T21:36:50.8020099' AS DateTime2), 0, NULL, NULL, NULL, 0, N'عميل حالي', N'عميل حالي')
+GO
+INSERT [dbo].[CustomerStatus] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (3, N'', CAST(N'2024-05-28T21:36:59.1247033' AS DateTime2), 0, NULL, NULL, NULL, 0, N'عميل محظور', N'عميل محظور')
+GO
+SET IDENTITY_INSERT [dbo].[CustomerStatus] OFF
+GO
+SET IDENTITY_INSERT [dbo].[CustomerTypes] ON 
+GO
+INSERT [dbo].[CustomerTypes] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (4, N'', CAST(N'2024-05-28T21:39:00.6216557' AS DateTime2), 0, NULL, NULL, NULL, 0, N'كبار العملاء', N'???? ???????')
+GO
+INSERT [dbo].[CustomerTypes] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (5, N'', CAST(N'2024-05-28T21:39:10.7640365' AS DateTime2), 0, NULL, NULL, NULL, 0, N'متوسط', N'?????')
+GO
+INSERT [dbo].[CustomerTypes] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (6, N'', CAST(N'2024-05-28T21:39:26.4046708' AS DateTime2), 0, NULL, NULL, NULL, 0, N'محل', N'???')
+GO
+SET IDENTITY_INSERT [dbo].[CustomerTypes] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Industries] ON 
+GO
+INSERT [dbo].[Industries] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, N'', CAST(N'2024-05-28T21:40:02.2686187' AS DateTime2), 0, NULL, NULL, NULL, 0, N'خدمي', N'خدمي')
+GO
+INSERT [dbo].[Industries] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (2, N'', CAST(N'2024-05-28T21:40:17.7321835' AS DateTime2), 0, NULL, NULL, NULL, 0, N'مدرسه', N'مدرسيه')
+GO
+INSERT [dbo].[Industries] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (3, N'', CAST(N'2024-05-28T21:40:29.0768264' AS DateTime2), 0, NULL, NULL, NULL, 0, N'طبي', N'طبي')
+GO
+SET IDENTITY_INSERT [dbo].[Industries] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Representivs] ON 
+GO
+INSERT [dbo].[Representivs] ([Id], [Email], [IsLocked], [LockDate], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, NULL, NULL, NULL, N'', CAST(N'2024-05-28T21:42:51.5004324' AS DateTime2), 0, NULL, NULL, NULL, 0, N'المندوب محمد فايز', N'المندوب محمد فايز')
+GO
+SET IDENTITY_INSERT [dbo].[Representivs] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Customers] ON 
+GO
+INSERT [dbo].[Customers] ([Id], [Email], [WarehouseAvilableTill], [Address], [Note], [CompaniesCompetation], [Periority], [PaymentAllowedDays], [CustomerTypeId], [StartDate], [EndDate], [IsBlocked], [EndReason], [AreaId], [IndustryId], [StatusId], [RepresentiveId], [LastStatusId], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, N'', CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), N'', N'', N'', 0, 0, 4, CAST(N'2024-05-28T00:00:00.0000000' AS DateTime2), CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), 0, N'', 1, 1, 1, 1, NULL, N'', CAST(N'2024-05-28T21:48:53.2961448' AS DateTime2), 0, NULL, NULL, NULL, 0, N'عميل شركه الدلتا للادويه', N'عميل شركه الدلتا للادويه')
+GO
+SET IDENTITY_INSERT [dbo].[Customers] OFF
+GO
+SET IDENTITY_INSERT [dbo].[ActionTypes] ON 
+GO
+INSERT [dbo].[ActionTypes] ([Id], [IsFinalAction], [IsNeedApprove], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, 0, 0, N'', CAST(N'2024-05-28T21:41:32.5023200' AS DateTime2), 0, NULL, NULL, NULL, 0, N'مكالمه', N'مكالمه')
+GO
+INSERT [dbo].[ActionTypes] ([Id], [IsFinalAction], [IsNeedApprove], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (2, 0, 0, N'', CAST(N'2024-05-28T21:41:42.0939156' AS DateTime2), 0, NULL, NULL, NULL, 0, N'مقابله', N'مقابله')
+GO
+INSERT [dbo].[ActionTypes] ([Id], [IsFinalAction], [IsNeedApprove], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (3, 0, 1, N'', CAST(N'2024-05-28T21:41:51.3750589' AS DateTime2), 0, NULL, NULL, NULL, 0, N'عرض سعر', N'عرض سعر')
+GO
+INSERT [dbo].[ActionTypes] ([Id], [IsFinalAction], [IsNeedApprove], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (4, 1, 1, N'', CAST(N'2024-05-28T21:42:07.6414892' AS DateTime2), 0, NULL, NULL, NULL, 0, N'طلب شراء', N'طلب شراء')
+GO
+INSERT [dbo].[ActionTypes] ([Id], [IsFinalAction], [IsNeedApprove], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (5, 0, 0, N'', CAST(N'2024-05-28T21:42:15.3565149' AS DateTime2), 0, NULL, NULL, NULL, 0, N'تحصيل', N'تحصيل')
+GO
+INSERT [dbo].[ActionTypes] ([Id], [IsFinalAction], [IsNeedApprove], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (6, 0, 0, N'', CAST(N'2024-05-28T22:56:47.3244260' AS DateTime2), 0, NULL, NULL, NULL, 0, N'تعليق', N'Comment')
+GO
+SET IDENTITY_INSERT [dbo].[ActionTypes] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Jobs] ON 
+GO
+INSERT [dbo].[Jobs] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, N'', CAST(N'2024-05-28T21:39:46.9090632' AS DateTime2), 0, NULL, NULL, NULL, 0, N'مدير الاداره الهندسيه', N'Eng Manager')
+GO
+SET IDENTITY_INSERT [dbo].[Jobs] OFF
+GO
+INSERT [dbo].[AspNetUsers] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount]) VALUES (N'6d62b54c-2f0b-4009-86c8-8a500575bc23', N'admin@magd.com', N'ADMIN@MAGD.COM', N'admin@magd.com', N'ADMIN@MAGD.COM', 1, N'AQAAAAIAAYagAAAAEMAekeskW8b6oCgE/h9hCXf4pCscHxJaJPG1wZABIIqfRA3rA+s0T+P+wot3x+FYhQ==', N'XRMGINXLSXWILBGCLS6S3QOICAPKVCN5', N'21f0b034-adbc-4ece-b23f-30b7b753f654', NULL, 0, 0, NULL, 1, 0)
+GO
+INSERT [dbo].[AspNetUsers] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount]) VALUES (N'7db6c033-b994-4f2b-8739-afb9670d3426', N'admin@erp.com', N'ADMIN@ERP.COM', N'admin@erp.com', N'ADMIN@ERP.COM', 0, N'AQAAAAIAAYagAAAAEHXKgXHzwvU5V9aLBAXn96nyjjWZcLmmfuhvmpkmT3AlSf3Bw1RGBpIil+YnXyQKOw==', N'5EEQNHMKDHGJJ2KX5ZUZ4BIED4SC4WLK', N'28715d7d-8b83-4c08-87e4-4c299852878c', NULL, 0, 0, NULL, 1, 0)
+GO
+SET IDENTITY_INSERT [dbo].[Questions] ON 
+GO
+INSERT [dbo].[Questions] ([Id], [IndustryId], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, 1, N'', CAST(N'2024-05-28T21:44:40.5024702' AS DateTime2), 0, NULL, NULL, NULL, 0, N'استهلاكاتك الشهريه', N'استهلاكاتك الشهريه')
+GO
+SET IDENTITY_INSERT [dbo].[Questions] OFF
+GO
+SET IDENTITY_INSERT [dbo].[TargetTypes] ON 
+GO
+INSERT [dbo].[TargetTypes] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, N'', CAST(N'2024-05-28T21:43:15.9304386' AS DateTime2), 0, NULL, NULL, NULL, 0, N'شهري', N'شهري')
+GO
+INSERT [dbo].[TargetTypes] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (2, N'', CAST(N'2024-05-28T21:43:21.8437805' AS DateTime2), 0, NULL, NULL, NULL, 0, N'سنوي', N'سنوي')
+GO
+INSERT [dbo].[TargetTypes] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (3, N'', CAST(N'2024-05-28T21:43:30.9986331' AS DateTime2), 0, NULL, NULL, NULL, 0, N'فتره اختبار', N'فتره اختبار')
+GO
+SET IDENTITY_INSERT [dbo].[TargetTypes] OFF
+GO
+SET IDENTITY_INSERT [dbo].[RepresintiveTarges] ON 
+GO
+INSERT [dbo].[RepresintiveTarges] ([Id], [RepresentiveId], [StartTargetTime], [EndTargetTime], [Amount], [AmountAtEndOfDuration], [TargetTypeId], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy]) VALUES (1, 1, CAST(N'2024-05-01T00:00:00.0000000' AS DateTime2), CAST(N'2024-05-31T00:00:00.0000000' AS DateTime2), CAST(100000.00 AS Decimal(18, 2)), NULL, 1, N'', CAST(N'2024-05-28T21:44:05.9576581' AS DateTime2), 0, NULL, NULL, NULL, 0)
+GO
+SET IDENTITY_INSERT [dbo].[RepresintiveTarges] OFF
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20240527105243_EditAction', N'8.0.5')
+GO
+SET IDENTITY_INSERT [dbo].[ActionStatus] ON 
+GO
+INSERT [dbo].[ActionStatus] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, N'', CAST(N'2024-05-28T22:54:38.0478080' AS DateTime2), 0, NULL, NULL, NULL, 0, N'مخطط', N'Planned')
+GO
+INSERT [dbo].[ActionStatus] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (4, N'', CAST(N'2024-05-28T21:45:25.4202162' AS DateTime2), 0, NULL, NULL, NULL, 0, N'مقفول', N'مقفول')
+GO
+INSERT [dbo].[ActionStatus] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (7, N'', CAST(N'2024-05-28T22:54:26.3453555' AS DateTime2), 0, NULL, NULL, NULL, 0, N'مفتوح', N'مفتوح')
+GO
+SET IDENTITY_INSERT [dbo].[ActionStatus] OFF
+GO
+SET IDENTITY_INSERT [dbo].[CustomerGroups] ON 
+GO
+INSERT [dbo].[CustomerGroups] ([Id], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, N'', CAST(N'2024-05-28T21:41:18.5394677' AS DateTime2), 0, NULL, NULL, NULL, 0, N'مجموعه الدلتا ', N'مجموعه الدلتا ')
+GO
+SET IDENTITY_INSERT [dbo].[CustomerGroups] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Products] ON 
+GO
+INSERT [dbo].[Products] ([Id], [Spects], [PackId], [Pack], [SellPrice], [BuyPrice], [Quantity], [AvilableQuantity], [UserCreated], [CreatedDateTime], [IsDeleted], [LastModifiedDate], [ModifyBy], [ModifyCount], [OrderBy], [NameAr], [NameEn]) VALUES (1, N'لزوجه 50/60', NULL, N'كرتونه 6 عبوات', CAST(6000.00 AS Decimal(18, 2)), CAST(5000.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(100.00 AS Decimal(18, 2)), N'', CAST(N'2024-05-28T21:46:34.7807968' AS DateTime2), 0, NULL, NULL, NULL, 0, N'زيت توتال 5000', N'زيت توتال 5000')
+GO
+SET IDENTITY_INSERT [dbo].[Products] OFF
+GO

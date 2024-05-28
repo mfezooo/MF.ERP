@@ -22,6 +22,49 @@ namespace MF.ERP.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("MF.ERP.Models.ActionDetailStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifyBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ModifyCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserCreated")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ActionDetailStatus");
+                });
+
             modelBuilder.Entity("MF.ERP.Models.ActionStatus", b =>
                 {
                     b.Property<int>("Id")
@@ -125,10 +168,10 @@ namespace MF.ERP.DataAccess.Migrations
                     b.Property<DateTime?>("ActionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ActionId")
+                    b.Property<int?>("ActionDetailStatusId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ActionRefranceId")
+                    b.Property<int?>("ActionId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ActionTypeId")
@@ -142,9 +185,6 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.Property<DateTime?>("CreatedDateTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
 
                     b.Property<bool?>("IsApprovedByManager")
                         .HasColumnType("bit");
@@ -171,27 +211,15 @@ namespace MF.ERP.DataAccess.Migrations
                     b.Property<int?>("NextActionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("NextActionTpeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("OfferPriceId")
-                        .HasColumnType("int");
-
                     b.Property<int>("OrderBy")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("PlanedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PurchasingOrderId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Result")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StatusId")
-                        .HasColumnType("int");
 
                     b.Property<string>("UserCreated")
                         .IsRequired()
@@ -202,13 +230,13 @@ namespace MF.ERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ActionDetailStatusId");
+
                     b.HasIndex("ActionTypeId");
 
                     b.HasIndex("ActionsMasterId");
 
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("NextActionTpeId");
+                    b.HasIndex("NextActionId");
 
                     b.ToTable("ActionsDetails", (string)null);
                 });
@@ -221,11 +249,23 @@ namespace MF.ERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("ActionDate")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("ActionRefranceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ActionStatusId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreatedDateTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ExpectedEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("ExpectedRevenue")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
@@ -242,17 +282,35 @@ namespace MF.ERP.DataAccess.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OfferPriceId")
+                        .HasColumnType("int");
+
                     b.Property<int>("OrderBy")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PurchasingOrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("RepresentiveId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserCreated")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ActionRefranceId");
+
+                    b.HasIndex("ActionStatusId");
+
+                    b.HasIndex("CustomerId");
 
                     b.HasIndex("RepresentiveId");
 
@@ -654,8 +712,8 @@ namespace MF.ERP.DataAccess.Migrations
                     b.Property<string>("NameEn")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(200)");
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("OrderBy")
                         .HasColumnType("int");
@@ -851,16 +909,16 @@ namespace MF.ERP.DataAccess.Migrations
                     b.Property<int>("OrderBy")
                         .HasColumnType("int");
 
-                    b.Property<int>("PaymentMethodId")
+                    b.Property<int?>("PaymentMethoudId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PaymentPlanId")
+                    b.Property<int?>("PaymentPlanId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PipeLineId")
+                    b.Property<int?>("PipeLineId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RepresintveId")
+                    b.Property<int>("RepresentiveId")
                         .HasColumnType("int");
 
                     b.Property<int>("StatusId")
@@ -880,6 +938,16 @@ namespace MF.ERP.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PaymentMethoudId");
+
+                    b.HasIndex("PaymentPlanId");
+
+                    b.HasIndex("PipeLineId");
+
+                    b.HasIndex("RepresentiveId");
+
+                    b.HasIndex("StatusId");
 
                     b.ToTable("Ordes");
                 });
@@ -948,6 +1016,49 @@ namespace MF.ERP.DataAccess.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("OrderDetais");
+                });
+
+            modelBuilder.Entity("MF.ERP.Models.OrderStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifyBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ModifyCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserCreated")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderStatus");
                 });
 
             modelBuilder.Entity("MF.ERP.Models.PaymentMethoud", b =>
@@ -1481,49 +1592,6 @@ namespace MF.ERP.DataAccess.Migrations
                     b.ToTable("RepresintiveTarges");
                 });
 
-            modelBuilder.Entity("MF.ERP.Models.Status", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreatedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifyBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ModifyCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NameAr")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameEn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderBy")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserCreated")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Status");
-                });
-
             modelBuilder.Entity("MF.ERP.Models.TargetType", b =>
                 {
                     b.Property<int>("Id")
@@ -1814,6 +1882,10 @@ namespace MF.ERP.DataAccess.Migrations
 
             modelBuilder.Entity("MF.ERP.Models.ActionsDetails", b =>
                 {
+                    b.HasOne("MF.ERP.Models.ActionDetailStatus", "ActionDetailStatus")
+                        .WithMany()
+                        .HasForeignKey("ActionDetailStatusId");
+
                     b.HasOne("MF.ERP.Models.ActionType", "ActionType")
                         .WithMany()
                         .HasForeignKey("ActionTypeId");
@@ -1824,32 +1896,48 @@ namespace MF.ERP.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("MF.ERP.Models.Customer", "Customer")
-                        .WithMany("ActionsDetails")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("MF.ERP.Models.ActionType", "NextActionTpe")
                         .WithMany()
-                        .HasForeignKey("NextActionTpeId");
+                        .HasForeignKey("NextActionId");
+
+                    b.Navigation("ActionDetailStatus");
 
                     b.Navigation("ActionType");
 
                     b.Navigation("ActionsMaster");
-
-                    b.Navigation("Customer");
 
                     b.Navigation("NextActionTpe");
                 });
 
             modelBuilder.Entity("MF.ERP.Models.ActionsMaster", b =>
                 {
+                    b.HasOne("MF.ERP.Models.ActionsMaster", "ActionRefrance")
+                        .WithMany()
+                        .HasForeignKey("ActionRefranceId");
+
+                    b.HasOne("MF.ERP.Models.ActionStatus", "ActionStatus")
+                        .WithMany()
+                        .HasForeignKey("ActionStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MF.ERP.Models.Customer", "Customer")
+                        .WithMany("ActionsMasters")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("MF.ERP.Models.Representive", "Representive")
                         .WithMany("ActionsMaster")
                         .HasForeignKey("RepresentiveId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("ActionRefrance");
+
+                    b.Navigation("ActionStatus");
+
+                    b.Navigation("Customer");
 
                     b.Navigation("Representive");
                 });
@@ -1927,6 +2015,43 @@ namespace MF.ERP.DataAccess.Migrations
                     b.Navigation("Industry");
 
                     b.Navigation("LastStatus");
+
+                    b.Navigation("Representive");
+                });
+
+            modelBuilder.Entity("MF.ERP.Models.Order", b =>
+                {
+                    b.HasOne("MF.ERP.Models.PaymentMethoud", "PaymentMethoud")
+                        .WithMany()
+                        .HasForeignKey("PaymentMethoudId");
+
+                    b.HasOne("MF.ERP.Models.PaymentPlan", "PaymentPlan")
+                        .WithMany()
+                        .HasForeignKey("PaymentPlanId");
+
+                    b.HasOne("MF.ERP.Models.PipeLine", "PipeLine")
+                        .WithMany()
+                        .HasForeignKey("PipeLineId");
+
+                    b.HasOne("MF.ERP.Models.Representive", "Representive")
+                        .WithMany()
+                        .HasForeignKey("RepresentiveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MF.ERP.Models.OrderStatus", "OrderStatus")
+                        .WithMany()
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OrderStatus");
+
+                    b.Navigation("PaymentMethoud");
+
+                    b.Navigation("PaymentPlan");
+
+                    b.Navigation("PipeLine");
 
                     b.Navigation("Representive");
                 });
@@ -2033,7 +2158,7 @@ namespace MF.ERP.DataAccess.Migrations
 
             modelBuilder.Entity("MF.ERP.Models.Customer", b =>
                 {
-                    b.Navigation("ActionsDetails");
+                    b.Navigation("ActionsMasters");
 
                     b.Navigation("ContactPersons");
                 });

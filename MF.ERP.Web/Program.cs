@@ -44,8 +44,8 @@ builder.Services.Configure<RequestLocalizationOptions>(option =>
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = new PathString("/Identity/Account/Login");
-    options.LogoutPath = new PathString("/Identity/Account/Login");
+    options.LoginPath = new PathString("/Identity/Account/Login2");
+    options.LogoutPath = new PathString("/Identity/Account/Login2");
 });
 var app = builder.Build();
 

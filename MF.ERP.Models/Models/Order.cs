@@ -7,7 +7,7 @@ namespace MF.ERP.Models
         public int CustomerId { get; set; }
         public int RepresentiveId { get; set; }
         [ForeignKey("RepresentiveId")]
-        public Representive Representive { get; set; }
+        public Representive Representive { get; set; } = null!;
         public DateTime DeleveryDate { get; set; }
         public DateTime ValidTo { get; set; }
         public int? PaymentMethoudId { get; set; }
@@ -32,7 +32,7 @@ namespace MF.ERP.Models
 
         public int StatusId { get; set; }
         [ForeignKey("StatusId")]
-        public  Status? Status { get; set; }
+        public  OrderStatus? OrderStatus { get; set; }
 
         public virtual IEnumerable<OrderDetail> OrderDetails { get; set; }
     }

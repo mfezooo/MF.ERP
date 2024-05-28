@@ -31,6 +31,6 @@ namespace MF.ERP.Models
         public CustomerStatus? LastStatus  { get; set; }
         public Representive? Representive  { get; set; }
         public IEnumerable<ContactPerson>? ContactPersons { get; set; }
-        public IEnumerable<ActionsDetails>? ActionsDetails { get; set; }
+        public IEnumerable<ActionsMaster>? ActionsMasters { get; set; }
     }
 }

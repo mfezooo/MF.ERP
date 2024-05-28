@@ -13,6 +13,7 @@
   "TargetType": "نوع التارجت",
   "Area": "المناطق",
   "ActionStatus": "حاله الاجراء",
+  "Action Detail Status": "حاله تفاصيل الاجراء",
   "Products": "المنتجات",
   "Product": "المنتج",
   "CustomerGroup": "مجموعات العملاء",

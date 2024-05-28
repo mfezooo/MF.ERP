@@ -13,12 +13,14 @@ namespace MF.ERP.DataAccess
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
+            OrderStatusRepository = new OrderStatusRepository(db);
             ActionsQuestionRepository = new ActionsQuestionRepository(db);
             CustomerRepository = new CustomerRepository(_db);
             CustomerTypeRepository = new CustomerTypeRepository(_db);
-            ActionsRepository = new ActionsRepository(_db);
+            ActionsMasterRepository = new ActionsMasterRepository(_db);
             ActionDetailsRepository = new ActionDetailsRepository(_db);          
             ActionStatusRepository = new ActionStatusRepository(_db);
+            ActionDetailStatusRepository = new ActionDetailStatusRepository(_db);
             ActionTypeRepository = new ActionTypeRepository(_db);
             AreaRepository = new AreaRepository(_db);
             ConsumeRepository = new ConsumeRepository(_db);
@@ -39,18 +41,19 @@ namespace MF.ERP.DataAccess
             ProductRepository = new ProductRepository(_db);
             QuestionRepository = new QuestionRepository(_db);
             RepresentiveRepository = new RepresentiveRepository(_db);
-            RepresintiveTargetRepository = new RepresintiveTargetRepository(_db);
-            StatusRepository = new StatusRepository(_db);
+            RepresintiveTargetRepository = new RepresintiveTargetRepository(_db); 
             TargetTypeRepository = new TargetTypeRepository(_db);
            
             TitleRepository = new TitleRepository(_db);
 
         }
+        public IOrderStatusRepository OrderStatusRepository { get; set; }
         public IActionsQuestionRepository ActionsQuestionRepository { get; set; }
         public ICustomerRepository CustomerRepository { get; set; }
         public ICustomerTypeRepository CustomerTypeRepository { get; set; }
-        public IActionsRepository ActionsRepository { get; set; }
+        public IActionsMasterRepository ActionsMasterRepository { get; set; }
         public IActionStatusRepository ActionStatusRepository { get; set; }
+        public IActionDetailStatusRepository ActionDetailStatusRepository { get; set; }
         public IActionTypeRepository ActionTypeRepository { get; set; }
         public IAreaRepository AreaRepository { get; set; }
         public IConsumeRepository ConsumeRepository { get; set; }
@@ -71,8 +74,7 @@ namespace MF.ERP.DataAccess
         public IProductRepository ProductRepository { get; set; }
         public IQuestionRepository QuestionRepository { get; set; }
         public IRepresentiveRepository RepresentiveRepository { get; set; }
-        public IRepresintiveTargetRepository RepresintiveTargetRepository { get; set; }
-        public IStatusRepository StatusRepository { get; set; }
+        public IRepresintiveTargetRepository RepresintiveTargetRepository { get; set; } 
         public ITargetTypeRepository TargetTypeRepository { get; set; } 
         public ITitleRepository TitleRepository { get; set; }
 

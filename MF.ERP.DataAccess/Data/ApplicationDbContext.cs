@@ -17,6 +17,7 @@ namespace MF.ERP.DataAccess
         }
        //public virtual DbSet<Actions> Actions { set; get; }
         public virtual DbSet<ActionStatus> ActionStatus { set; get; }
+        public virtual DbSet<ActionDetailStatus> ActionDetailStatus { set; get; }
         public virtual DbSet<ActionType> ActionTypes { set; get; }
         public virtual DbSet<Area> Areas { set; get; }
         public virtual DbSet<Consume> Consumes { set; get; }
@@ -40,7 +41,7 @@ namespace MF.ERP.DataAccess
         public virtual DbSet<Question> Questions { set; get; }
         public virtual DbSet<Representive> Representivs { set; get; }
         public virtual DbSet<RepresintiveTarget> RepresintiveTarges { set; get; }
-        public virtual DbSet<Status> Status { set; get; }
+        public virtual DbSet<OrderStatus> OrderStatus { set; get; }
         public virtual DbSet<TargetType> TargetTypes { set; get; }  
         public virtual DbSet<Title> Titles { set; get; }
         public virtual DbSet<ActionsMaster> ActionsMaster { set; get; }
@@ -57,7 +58,7 @@ namespace MF.ERP.DataAccess
                 entity.ToTable("CustomerTypes");
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.NameAr).IsUnicode().HasMaxLength(200).IsRequired();
-                entity.Property(e => e.NameEn).IsUnicode(false).HasMaxLength(200).IsRequired();
+                entity.Property(e => e.NameEn).IsUnicode().HasMaxLength(200).IsRequired();
 
             });
 
@@ -70,14 +71,7 @@ namespace MF.ERP.DataAccess
                  .HasForeignKey(e => e.ActionsMasterId)
                  .IsRequired()
                  .OnDelete(DeleteBehavior.Restrict);
-
-                entity.HasOne(e => e.Customer)
- .WithMany(e => e!.ActionsDetails)
- .HasForeignKey(e => e.CustomerId)
- .IsRequired()
- .OnDelete(DeleteBehavior.Restrict);
-
-            });
+                 
             modelBuilder.Entity<ActionsMaster>(entity =>
             {
                 entity.ToTable("ActionsMaster");
@@ -87,6 +81,13 @@ namespace MF.ERP.DataAccess
 .HasForeignKey(e => e.RepresentiveId)
 .IsRequired()
 .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.Customer)
+.WithMany(e => e!.ActionsMasters)
+.HasForeignKey(e => e.CustomerId)
+.IsRequired()
+.OnDelete(DeleteBehavior.Restrict);
+
+            });
 
             });
             //modelBuilder.Entity<Customer>(entity =>

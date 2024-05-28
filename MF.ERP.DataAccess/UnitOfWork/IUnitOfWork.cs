@@ -2,12 +2,14 @@
 {
     public interface IUnitOfWork
     {
+        IOrderStatusRepository OrderStatusRepository { get; }
         IActionsQuestionRepository ActionsQuestionRepository { get; }
         ICustomerRepository CustomerRepository { get; }
         ICustomerTypeRepository CustomerTypeRepository { get; }
-        IActionsRepository ActionsRepository { get; }
+        IActionsMasterRepository ActionsMasterRepository { get; }
         IActionDetailsRepository ActionDetailsRepository { get; }
         IActionStatusRepository ActionStatusRepository { get; }
+        IActionDetailStatusRepository ActionDetailStatusRepository { get; }
         IActionTypeRepository ActionTypeRepository { get; }
         IAreaRepository AreaRepository { get; }
         IConsumeRepository ConsumeRepository { get; }
@@ -28,8 +30,7 @@
         IProductRepository ProductRepository { get; }
         IQuestionRepository QuestionRepository { get; }
         IRepresentiveRepository RepresentiveRepository { get; }
-        IRepresintiveTargetRepository RepresintiveTargetRepository { get; }
-        IStatusRepository StatusRepository { get; }
+        IRepresintiveTargetRepository RepresintiveTargetRepository { get; } 
         ITargetTypeRepository TargetTypeRepository { get; }
         
         ITitleRepository TitleRepository { get; }

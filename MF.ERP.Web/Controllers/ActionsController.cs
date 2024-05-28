@@ -22,13 +22,13 @@ namespace MF.ERP.Web.Controllers
             {
                 UserCreated = "1",
                 RepresentiveList = await GetallRepresentive(),
-                ActionDate = DateTime.Now,
-                ActionDateDetails = DateTime.Now,
-                NextActionDate = DateTime.Now
-                
-            };
-            ViewBag.Customer = await GetallCustomer();
-            ViewBag.ActionType = await GetallActionType();
+                CustomerList = await GetallCustomer(),
+                ActionStatusList = await GetallActionStatus(),
+                ActionDetailStatusList = await GetallActionDetailStatusList(),
+                ActionTypeList = await GetallActionType(),
+                StartDate = DateTime.Now
+
+            };  
             return View(vm);
         }
         [HttpPost]
@@ -40,9 +40,9 @@ namespace MF.ERP.Web.Controllers
             {
                 var mapedEntity = _mapper.Map<ActionsMaster>(entity);
                 if (entity.Id != 0)
-                    _unitOfWork.ActionsRepository.Update(mapedEntity);
+                    _unitOfWork.ActionsMasterRepository.Update(mapedEntity);
                 else
-                    _unitOfWork.ActionsRepository.Add(mapedEntity);
+                    _unitOfWork.ActionsMasterRepository.Add(mapedEntity);
 
                 int savedCount = _unitOfWork.Save();
                 if (savedCount > 0)
@@ -55,41 +55,44 @@ namespace MF.ERP.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var enties = await _unitOfWork.ActionsRepository.GetAllAsync(
-                include: x => x.Include(z => z.Representive!).Include(q=>q.Details!).ThenInclude(q=>q.Customer!));
-            var mapedEntites = _mapper.Map<List<AreaVM>>(enties);
+            var enties = await _unitOfWork.ActionsMasterRepository.GetAllAsync(
+                include: x => x.Include(z => z.Representive!).Include(q => q.Customer!).Include(q => q.Details!));
+            var mapedEntites = _mapper.Map<List<ActionsMasterVM>>(enties);
             return Json(mapedEntites);
         }
         [HttpGet]
         public async Task<IActionResult> GetById(int id)
         {
-            var enties = await _unitOfWork.ActionsRepository.GetFirstOrDefaultAsync(x => x.Id == id,
-                include: x => x.Include(z => z.Representive!).Include(q => q.Details!).ThenInclude(q => q.Customer!));
+            var enties = await _unitOfWork.ActionsMasterRepository.GetFirstOrDefaultAsync(x => x.Id == id,
+                include: x => x.Include(z => z.Representive!).Include(q => q.Customer!).Include(q => q.Details!));
             return Json(enties);
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var enties = await _unitOfWork.ActionsRepository.GetFirstOrDefaultAsync(x => x.Id == id);
-            _unitOfWork.ActionsRepository.Remove(enties!);
+            var enties = await _unitOfWork.ActionsMasterRepository.GetFirstOrDefaultAsync(x => x.Id == id);
+            _unitOfWork.ActionsMasterRepository.Remove(enties!);
             int savedCount = _unitOfWork.Save();
             if (savedCount > 0)
                 return Json(new { isSuccess = true, message = "Deleted Successfuly" });
             return Json(new { isSuccess = true, message = "Error in saving" });
         }
         [HttpGet]
-        public async Task<List<SelectListItem>?> GetallRepresentive()
+        public async Task<List<SelectListItem>?> GetallRepresentive(int id = 0)
         {
             // عمل صلاحية لتحديد المندوب اللى مربوط على المستخدم فقط لاظهاره فى الشاشة ولو هو مدير يظهر الكل 
+
             var items = await _unitOfWork.RepresentiveRepository.GetAllAsync();
+            items = id != 0 ? items.Where(x => x.Id == id) : items;
             return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
         }
 
         [HttpGet]
-        public async Task<List<SelectListItem>?> GetallCustomer()
+        public async Task<List<SelectListItem>?> GetallCustomer(int representiveId = 0)
         {
             // عمل صلاحية لتحديد العميل اللى مربوط على المستخدم فقط لاظهاره فى الشاشة ولو هو مدير يظهر الكل 
             var items = await _unitOfWork.CustomerRepository.GetAllAsync();
+            items = representiveId != 0 ? items.Where(x => x.RepresentiveId == representiveId) : items; 
             return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
         }
 
@@ -98,6 +101,20 @@ namespace MF.ERP.Web.Controllers
         {
 
             var items = await _unitOfWork.ActionTypeRepository.GetAllAsync();
+            return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
+        }
+        [HttpGet]
+        public async Task<List<SelectListItem>?> GetallActionStatus()
+        {
+
+            var items = await _unitOfWork.ActionStatusRepository.GetAllAsync();
+            return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
+        }
+        [HttpGet]
+        public async Task<List<SelectListItem>?> GetallActionDetailStatusList()
+        {
+
+            var items = await _unitOfWork.ActionDetailStatusRepository.GetAllAsync();
             return items.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameAr }).ToList();
         }
     }

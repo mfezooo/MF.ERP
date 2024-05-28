@@ -1,3 +1,4 @@
+using MF.ERP.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MF.ERP.Web
@@ -6,7 +7,7 @@ namespace MF.ERP.Web
     {
         public int CustomerId { get; set; }
         public string Email { get; set; } = string.Empty;
-        public TimeSpan WarehouseAvilableTill { get; set; }  
+        public DateTime WarehouseAvilableTill { get; set; }  
         public string Address { get; set; } = string.Empty;
         public string Note { get; set; } = string.Empty;
         public string CompaniesCompetation { get; set; } = string.Empty;
@@ -27,6 +28,10 @@ namespace MF.ERP.Web
         public List<SelectListItem>? AreaList { get; set; }
         public List<SelectListItem>? IndustryList { get; set; }
         public List<SelectListItem>? LastStatusList { get; set; }
-        public List<SelectListItem>? RepresentiveList { get; set; } 
+        public List<SelectListItem>? RepresentiveList { get; set; }
+
+
+        
+
     }
 }

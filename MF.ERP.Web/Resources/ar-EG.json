@@ -52,5 +52,15 @@
   "provider": "provider",
   "Provider": "Provider",
   "DisplayName": "DisplayName",
-  "Confirm password": "Confirm password"
+  "Confirm password": "Confirm password",
+  "Representive": "المندوب",
+  "ActionDate": "التاريخ",
+  "Notes": "الملاحظات",
+  "Customer": "Customer",
+  "ActionType": "ActionType",
+  "NextActionType": "NextActionType",
+  "NextActionDate": "NextActionDate",
+  "Result": "Result"
+
+
 }

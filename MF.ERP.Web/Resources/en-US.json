@@ -50,7 +50,15 @@
   "Login": "Login",
   "Logout": "Logout",
   "provider": "provider",
-  "Provider": "Provider", 
+  "Provider": "Provider",
   "DisplayName": "DisplayName",
-  "Confirm password": "Confirm password"
+  "Confirm password": "Confirm password",
+  "Representive": "Representive",
+  "ActionDate": "ActionDate",
+  "Notes": "Notes",
+  "Customer": "Customer",
+  "ActionType": "ActionType",
+  "NextActionType": "NextActionType",
+  "NextActionDate": "NextActionDate",
+  "Result": "Result"
 }

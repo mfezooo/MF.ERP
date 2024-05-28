@@ -7,7 +7,7 @@ namespace MF.ERP.Web
     {
         public AutoMapperProfile()
         {
-           // ActionsMapper();
+            ActionsMapper();
             ActionStatusMapper();
             ActionTypeMapper();
             AreaMapper();
@@ -37,10 +37,11 @@ namespace MF.ERP.Web
             TitleMapper();
             ActionsQuestionMapper();
         }
-        //private void ActionsMapper()
-        //{
-        //    CreateMap<ActionsVM, Actions>().ReverseMap();
-        //}
+        private void ActionsMapper()
+        {
+            CreateMap<ActionsMasterVM, ActionsMaster>().ReverseMap();
+            CreateMap<ActionsDetailsVM, ActionsDetails>().ReverseMap();
+        }
 
         private void ActionStatusMapper()
         {

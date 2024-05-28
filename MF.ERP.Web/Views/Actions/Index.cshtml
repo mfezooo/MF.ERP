@@ -1,0 +1,166 @@
+﻿ @model ActionsMasterVM
+@{
+    ViewData["Title"] = "Manage Action ";
+}
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-justify" id="ModalTitleCreate"> @localizer["CreateTitle"]</h5>
+                <h5 class="modal-title text-justify" id="ModalTitleEdit">   @localizer["EditTitle"]</h5>
+                x
+            </div>
+            <div class="modal-body">
+                <div id="results" typeof="submit" style="overflow:hidden; ">
+                    <form method="post" id="frmCreate" class="p-3">
+                        <input hidden asp-for="@Model.Id" id="id" , name="Id" />
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label"> @localizer["Representive"]</label>
+                                <div class="col-md-12">
+                                    <select name="GovernmentId" class="form-control" asp-items="@(new SelectList(@Model.RepresentiveList, "Value", "Text"))" required></select>
+                                    <small id='GovernmentId' class='form-text text-muted'>  </small>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="nameEnInput">  @localizer["ActionDate"]</label>
+                                <div class="col-md-12">
+                                    <input type="date" class="form-control" id="actionDate" aria-describedby="ActionDate" name="ActionDate" asp-for="@Model.ActionDate" required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameEnInput">  @localizer["Notes"]</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" id="notes" aria-describedby="Notes" name="Notes" asp-for="@Model.Notes" required>
+                                <span class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <input type="text" class="form-control" aria-describedby="emailHelp" name="UserCreated" value="@ViewBag.cUser" hidden>
+
+
+                        @* details *@
+                        <br />
+                        <hr />
+                        <div class="row">
+
+                            <div class="form-group col-md-3">
+                                <label class="control-label"> @localizer["Customer"]</label>
+                                <select name="customerId" id="customerId" class="form-control" asp-items="@(new SelectList(ViewBag.Customer, "Value", "Text"))" required></select>
+                                <small id='CustomerId' class='form-text text-muted'>  </small>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label class="control-label"> @localizer["ActionType"]</label>
+                                <select name="actionId" id="actionId" class="form-control" asp-items="@(new SelectList(ViewBag.ActionType, "Value", "Text"))" required></select>
+                                <small id='ActionId' class='form-text text-muted'>  </small>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="nameEnInput">  @localizer["ActionDate"]</label>
+                                <div class="col-md-12">
+                                    <input type="date" class="form-control" id="actionDateDetails" aria-describedby="ActionDateDetails" name="ActionDateDetails" asp-for="@Model.ActionDateDetails" required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="control-label"> @localizer["NextActionType"]</label>
+                                <select name="nextActionId" id="nextActionId" class="form-control" asp-items="@(new SelectList(ViewBag.ActionType, "Value", "Text"))" required></select>
+                                <small id='nextActionId' class='form-text text-muted'>  </small>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="nameEnInput">  @localizer["NextActionDate"]</label>
+                                <div class="col-md-12">
+                                    <input type="date" class="form-control" id="nextActionDate" aria-describedby="NextActionDate" name="NextActionDate" asp-for="@Model.NextActionDate" required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-7">
+                                <label for="nameEnInput">  @localizer["Result"]</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="result" aria-describedby="Result" name="Result"  required>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                               <br />
+                                <button id="btnadd" type="button" class="btn btn-sm btn-secondary visible" onclick="AddItem(this)">Add</button>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-md-12 ">
+                            <div class="table-responsive-lg">
+                                <table class="table table-responsive" id="ExpTable">
+                                    <thead>
+                                        <tr>
+                                            <td hidden></td>
+                                            <td hidden></td>
+                                            <td>@localizer["Customer"]</td>
+                                            <td hidden></td>
+                                            <td>@localizer["ActionType"]</td>
+                                            <td>@localizer["ActionDate"]</td>
+                                            <td hidden></td>
+                                            <td>@localizer["NextActionType"]</td>
+                                            <td>@localizer["NextActionDate"]</td>
+                                            <td>@localizer["Result"]</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                        @* details *@
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" id="btnSecondary" data-dismiss="modal" onclick="hideModel()">@localizer["Cancel"]</button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="border p-3 mt-4" style="width:100%; overflow-x:scroll;">
+    <div class="row pt-4">
+        <div class="col-10 d-flex justify-content-start align-items-center">
+            <h2>@localizer["Actions"]</h2>
+        </div>
+        <div class="col-2 d-flex justify-content-end align-items-center">
+            <button class="btn btn-primary btnCreate"><i class="fa fa-plus"></i> @localizer["Create"]</button>
+        </div>
+    </div>
+    <br />
+
+    <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Representive Name
+                </th>
+                <th>
+                    ActionDate
+                </th>
+                <th>
+                    Notes
+                </th>
+            </tr>
+
+        </thead>
+    </table>
+</div>
+@section Scripts {
+    <script src="~/js/coding/action.js"></script>
+}

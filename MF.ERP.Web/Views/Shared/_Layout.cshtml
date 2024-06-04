@@ -34,6 +34,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
     <link id="pagestyle" href="~/assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+    <style>
+        .nested-menu {
+            padding-left: 20px; /* Optional: indent nested items */
+        }
+    </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -57,13 +62,169 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="~/pages/tables.html">
+                    <a class="nav-link text-white" href="#billingMenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="billingMenu">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
+                            <i class="material-icons opacity-10">receipt_long</i>
                         </div>
-                        <span class="nav-link-text ms-1">Tables</span>
+                        <span class="nav-link-text ms-1">Basics</span>
                     </a>
+                    <div class="collapse" id="billingMenu">
+                        <ul class="nested-menu list-unstyled">
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\CustomerStatus">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Customer Status</span>
+                                </a>
+                            </li>
+                           
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\Job">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Jobs</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\Industry">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Industry</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\Government">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Government</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\CustomerGroup">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Customer Group</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\RepresintiveTarget">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">RepresintiveTarget</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\Question">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Question</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\ActionsQuestion">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">ActionsQuestion</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\ActionStatus">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Action Status</span>
+                                </a>
+                            </li>
+
+
+                                    <li class="nav-item">
+                                <a class="nav-link text-white" href="\ActionDetailStatus">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Action Detail Status</span>
+                                </a>
+                            </li>
+
+
+                                    <li class="nav-item">
+                                <a class="nav-link text-white" href="\TargetType">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Target Type</span>
+                                </a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\Product">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Product</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\Representive">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Representive</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+
+
+
+              @*   <li class="nav-item">
+                    <a class="nav-link text-white" href="#billingMenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="billingMenu">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">receipt_long</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Billing</span>
+                    </a>
+                    <div class="collapse" id="billingMenu">
+                        <ul class="nested-menu list-unstyled">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/pages/billing/invoices.html">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">description</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Invoices</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/pages/billing/payments.html">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">payment</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Payments</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> *@
+
                 <li class="nav-item">
                     <a class="nav-link text-white " href="~/pages/billing.html">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -591,7 +752,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="~/assets/js/material-dashboard.min.js?v=3.0.0"></script>
-   
+
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
